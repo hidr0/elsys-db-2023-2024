@@ -1,9 +1,0 @@
--- Drop database if exists students;
--- Create database students;
--- CREATE TABLE if not exists students_table (
--- name VARCHAR(30) NOT NULL,
--- age INT NOT NULL,
--- SHOW TABLES;
--- INSERT INTO students_table VALUE("Alexandra", 17);
--- INSERT INTO students_table VALUE("Iva", 17);
--- DESCRIBE students_table;
