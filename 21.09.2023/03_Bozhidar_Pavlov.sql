@@ -12,14 +12,14 @@ use students;
 create table students(
 	id serial not null,
 	name varchar(255),
-    age smallint
+	age smallint
 );
 
 -- (6) Добавяме редове
 insert into students(name, age)
 values
 	("Мишо", 2),
-    ("Иван", 3);
+	("Иван", 3);
 
 -- (7) Проверяваме го
 show tables;
