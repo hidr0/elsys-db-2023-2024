@@ -2,8 +2,8 @@
 DROP DATABASE IF EXISTS Students;
 
 -- 2
-
 CREATE DATABASE Students;
+
 -- 3
 USE Students;
 
