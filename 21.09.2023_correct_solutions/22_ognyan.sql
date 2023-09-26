@@ -9,6 +9,7 @@ use db;
 
 -- (4), (5)
 create table students (
+	id int AUTO_INCREMENT PRIMARY KEY,
 	name varchar(255)
 );
 
