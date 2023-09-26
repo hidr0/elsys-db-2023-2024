@@ -15,4 +15,4 @@ INSERT INTO People (PersonName, PersonAge) VALUES ('Mladen Stankov', 20);
 INSERT INTO People (PersonName, PersonAge) VALUES ('Ivan Debel', 23);
 INSERT INTO People (PersonName, PersonAge) VALUES ('Kriza', 211);
 -- Checking table
-SELECT * FROM gosho.people
+SELECT * FROM people
