@@ -21,8 +21,8 @@ create table if not exists students_table( -- (4)
     Age int
 );
 
-INSERT INTO students_table(FirstName, LastName, Age) VALUES (Gosho, Goshov, 120); -- (5) and (6)
-INSERT INTO students_table(FirstName, LastName, Age) VALUES (Petkan, Petkanov, 12); -- (5) and (6)
-INSERT INTO students_table(FirstName, LastName, Age) VALUES (Dragan, Draganov, 120); -- (5) and (6)
+INSERT INTO students_table(FirstName, LastName, Age) VALUES ("Gosho", "Goshov", 120); -- (5) and (6)
+INSERT INTO students_table(FirstName, LastName, Age) VALUES ("Petkan", "Petkanov", 12); -- (5) and (6)
+INSERT INTO students_table(FirstName, LastName, Age) VALUES ("Dragan", "Draganov", 120); -- (5) and (6)
 
-SELECT * FROM students; -- (7)
+SELECT * FROM students_table; -- (7)
