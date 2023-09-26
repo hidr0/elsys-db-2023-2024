@@ -1,16 +1,17 @@
 -- (1)
-drop database if exists children;  
+DROP DATABASE IF EXISTS children;  
 -- (2)
-create database children;
+CREATE DATABASE children;
 -- (3)
-use children;
+USE children;
 -- (4) (5) 
-create table students(
+CREATE TABLE students(
+	id int AUTO_INCREMENT PRIMARY KEY,
 	name tinytext,
-    age tinyint
+	age tinyint
 );
 -- (6) 
-insert into students values("Gosho", 127);
-insert into students values("Pesho", 12);
+INSERT INTO students(name, age) VALUES("Gosho", 127);
+INSERT INTO students(name, age) VALUES("Pesho", 12);
 -- (7) gosho is about 127 i think
-select * from students;
+SELECT * FROM students;
