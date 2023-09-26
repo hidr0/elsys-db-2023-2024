@@ -1,12 +1,12 @@
 
 -- 1;
-drop database if exists gosho;
+DROP DATABASE IF EXISTS gosho;
 
 -- 2;
-create database gosho;
+CREATE database gosho;
 
 -- 3;
-use gosho;
+USE gosho;
 
 -- 4,5;
 CREATE TABLE dnevnik (
