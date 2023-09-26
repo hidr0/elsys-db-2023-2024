@@ -10,7 +10,7 @@ use students;
 -- (4) Създаваме таблици
 -- (5) Добавяме колони
 create table students(
-	id serial,
+	id serial primary key,
 	name varchar(255),
 	age smallint
 );
