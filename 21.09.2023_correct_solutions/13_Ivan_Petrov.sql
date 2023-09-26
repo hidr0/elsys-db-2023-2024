@@ -11,7 +11,7 @@ use gosho;
 -- 4,5;
 CREATE TABLE dnevnik (
 	id int AUTO_INCREMENT PRIMARY KEY,
-    years INT,
+    years int,
     FirstName varchar(100)
 );
 
