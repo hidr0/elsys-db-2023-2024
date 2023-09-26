@@ -20,3 +20,4 @@ insert into students(name) values ("Christopher Balkanski");
 
 -- (7)
 
+select * from students;
