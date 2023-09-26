@@ -1,4 +1,3 @@
-
 -- 1;
 DROP DATABASE IF EXISTS gosho;
 
@@ -11,8 +10,8 @@ USE gosho;
 -- 4,5;
 CREATE TABLE dnevnik (
 	id int AUTO_INCREMENT PRIMARY KEY,
-    years int,
-    FirstName varchar(100)
+	years int,
+	FirstName varchar(100)
 );
 
 -- 6;
