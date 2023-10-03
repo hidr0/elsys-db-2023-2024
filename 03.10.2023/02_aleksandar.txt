@@ -1,0 +1,20 @@
+SELECT -
+	Outputs records according to a set criteria
+UPDATE -
+	Changes the value of a record
+DELETE -
+	Removes a record from a table
+INSERT INTO -
+	Adds a new record to a table
+CREATE DATABASE -
+	Creates a database
+ALTER DATABASE -
+	Changes the properties of a database
+CREATE TABLE -
+	Creates a table (i.e. its columns) in a database
+ALTER TABLE -
+	Changes the properties of a table
+DROP TABLE -
+	Removes a table from a database
+	
+Note: most of these commands can be used on a set of objects, not just singulair ones
