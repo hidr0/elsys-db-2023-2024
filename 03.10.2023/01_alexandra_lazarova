@@ -1,5 +1,5 @@
 SELECT - селектира данни от таблицата и ги връща
-Пр.: SELECT column1, FROM table_name;
+Пр.: SELECT column1 FROM table_name;
 
 UPDATE - модифицира съществуващите записи в таблица
 Пр.: UPDATE table_name
