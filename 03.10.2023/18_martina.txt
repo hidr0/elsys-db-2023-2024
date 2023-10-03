@@ -1,0 +1,17 @@
+SELECT - extract-ва data от избрания от нас database
+
+UPDATE - update-ва data-та в някой database
+
+DELETE - изтрива таблица от database-а
+
+INSERT INTO - пъхаме нова информация във вече съществуващ database
+
+CREATE DATABASE - създаваме нов database
+
+ALTER DATABASE - прави промени по database-a
+
+CREATE TABLE - създава нова таблица в database-a
+
+ALTER TABLE - прави промени по таблицата
+
+DROP TABLE - изтрива таблица от database-a
