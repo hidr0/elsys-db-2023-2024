@@ -1,0 +1,19 @@
+## Опишете какво прави всяка команда.
+
+SELECT -
+
+UPDATE -
+
+DELETE -
+
+INSERT INTO -
+
+CREATE DATABASE -
+
+ALTER DATABASE -
+
+CREATE TABLE -
+
+ALTER TABLE -
+
+DROP TABLE -
