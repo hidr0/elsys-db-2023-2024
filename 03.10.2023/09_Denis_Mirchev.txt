@@ -1,0 +1,53 @@
+SELECT - Използва се за избор на данни от таблица в база данни. Върнатите данни се запазват в таблица с резултати.
+
+SELECT column1, column2, ...
+FROM table_name; 
+
+
+UPDATE - Използва се за да се редактират вече съществуващи данни от таблица в базата данни.
+
+UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+WHERE condition; 
+
+
+DELETE - Използва се за да се изтрият редове от таблицата с данни.
+
+DELETE FROM table_name WHERE condition; 
+
+
+INSERT INTO - Вмъква нови редове с данни в таблица.
+
+INSERT INTO table_name (column1, column2, column3, ...)
+VALUES (value1, value2, value3, ...); 
+
+
+CREATE DATABASE - Създава нова SQL база данни.
+
+CREATE DATABASE databasename;
+
+
+ALTER DATABASE - Променя характеристиките на съществуваща база данни.
+
+ALTER DATABASE [database_name] alter_option ...
+
+
+CREATE TABLE - Създава нова таблица в база данни.
+
+CREATE TABLE table_name (
+    column1 datatype,
+    column2 datatype,
+    column3 datatype,
+   ....
+); 
+
+
+ALTER TABLE - Използва се за добавяне, изтриване или промяна на колони в съществуваща таблица. Използва се също за добавяне и премахване на различни ограничения в съществуваща таблица.
+
+ALTER TABLE table_name
+ADD column_name datatype; 
+
+
+DROP TABLE - Премахва съществуваща таблица в базата данни.
+
+DROP TABLE table_name;
