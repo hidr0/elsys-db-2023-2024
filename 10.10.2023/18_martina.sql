@@ -40,4 +40,4 @@ select name from Students where age is not null;
 select age from Students where name is not null;
 
 -- избираме всички имена на ученици, които имат години и ги сортираме от най-голям към най-малък
-select name from Students where age is not null order by age asc;
+select name from Students where age is not null order by age desc;
