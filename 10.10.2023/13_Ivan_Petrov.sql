@@ -35,7 +35,7 @@ SELECT * FROM Students
 WHERE NOT (age%2=1)
 ORDER BY age ASC;
 
--- dali se dali age se deli na 3 i podrejam ot po malko kum po golqmo
+-- dali age se deli na 3 i podrejam ot po malko kum po golqmo
 SELECT * FROM Students
 WHERE NOT (age%3=0)
 ORDER BY age ASC;
