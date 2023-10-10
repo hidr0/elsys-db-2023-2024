@@ -20,7 +20,7 @@ WHERE age <26 AND age >23;
 -- четни години
 SELECT * FROM Students
 WHERE age % 2 = 0;
--- по азбучен ред
+-- по възраст
 SELECT * FROM Students
 ORDER BY age;
 -- ако се казват Gosho
