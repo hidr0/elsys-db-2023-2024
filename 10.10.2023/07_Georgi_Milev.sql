@@ -17,12 +17,12 @@ INSERT INTO Students(name,age) VALUES("Misho",23);
 
 SELECT * from Students
 WHERE age <26 AND age >23;
--- chetni godini
+-- четни години
 SELECT * FROM Students
 WHERE age % 2 = 0;
--- po azbuchen red
+-- по азбучен ред
 SELECT * FROM Students
 ORDER BY age;
--- ako se kazvat Gosho
+-- ако се казват Gosho
 SELECT * FROM Students
 WHERE name = "Gosho";
