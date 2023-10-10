@@ -3,7 +3,7 @@ create database classwork3;
 use classwork3;
 
 create table students(
-	id serial primary key,
+    id serial primary key,
     name varchar(64),
     age int,
     num_frogs tinyint default 2
@@ -15,7 +15,7 @@ values
 
 insert into students(name, age)
 values
-	("Misho", 26),
+    ("Misho", 26),
     ("Gosho", 20),
     ("Pepi", 21),
     ("Stefi", 24),
@@ -46,7 +46,7 @@ select name
 from students
 where not age is null;
 
--- Всичките ученици, чиито имена имат съсъсъс 17 букви повече от възрастта им, подредени лексикографски по име
+-- Всичките ученици, чиито имена имат със 17 букви повече от възрастта им, подредени лексикографски по име
 select *
 from students
 where length(name) + 17 = age
@@ -60,7 +60,7 @@ order by age desc;
 -- Хиперлинк към страницата на всеки един ученик в staging сървъра, подредени по id, които имат години
 select concat("https://staging.elsys-bg.org/years/2023/students/", id)
 from students
-where not (not (age is not null))
+where age is not null
 order by id;
 
 -- Броя на учениците по най-оптималния начин (https://youtu.be/H6juZ8c_Nu8)
@@ -75,5 +75,5 @@ select name
 from students
 where num_frogs = age + 18
 order by
-	name desc,
+    name desc,
     age asc;
