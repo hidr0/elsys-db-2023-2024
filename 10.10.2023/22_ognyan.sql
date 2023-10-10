@@ -47,6 +47,6 @@ ORDER BY name ASC;
 SELECT * FROM Students
 WHERE age < 18;
 
--- find all entries conatining NULL values
+-- find all entries containing NULL values
 SELECT * FROM Students
 WHERE age IS NULL OR name IS NULL;
