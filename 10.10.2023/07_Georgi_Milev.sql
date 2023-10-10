@@ -14,13 +14,13 @@ INSERT INTO Students(name,age) VALUES("Stefi",27);
 INSERT INTO Students(name,age) VALUES("Sasho",25);
 INSERT INTO Students(name,age) VALUES("Bobi",22);
 INSERT INTO Students(name,age) VALUES("Misho",23);
-
+-- между 23 и 26 години
 SELECT * from Students
 WHERE age <26 AND age >23;
 -- четни години
 SELECT * FROM Students
 WHERE age % 2 = 0;
--- по възраст
+-- сортирани по възраст
 SELECT * FROM Students
 ORDER BY age;
 -- ако се казват Gosho
