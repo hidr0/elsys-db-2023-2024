@@ -1,4 +1,5 @@
 -- Create a new database and select it
+DROP DATABASE IF EXISTS SchoolDB;
 CREATE DATABASE SchoolDB;
 USE SchoolDB;
 
@@ -57,3 +58,5 @@ ALTER TABLE Students ADD Email VARCHAR(100);
 UPDATE Students
 SET Email = 'john@elsys-bg.org'
 WHERE StudentID IN (1, 2);
+
+SELECT * FROM Students
