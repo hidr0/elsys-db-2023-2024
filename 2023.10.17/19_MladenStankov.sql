@@ -22,9 +22,9 @@ INSERT INTO Students (FirstName, LastName, DOB, Address)
 VALUES
     ('John', 'Ivanov', '2001-03-15', '123 Elm Street'),
     ('John', 'Stoilov', '1998-07-21', '456 Oak Avenue'),
-    ('John', 'Lilov', '2002-05-10', '123 Elm Street'),
-    ('Joe', 'Biden', '1999-12-05', NULL),
-    ('Jane', 'Doe', '2003-09-20', '789 Cedar Lane');
+    ('John', 'Lilov', '2002-11-09', '123 Elm Street'),
+    ('Joe', 'Biden', '1001-09-11', NULL),
+    ('Jane', 'Doe', '2003-12-21', '789 Cedar Lane');
 
 INSERT INTO Courses (CourseName, CourseDescription)
 VALUES
