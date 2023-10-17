@@ -38,7 +38,7 @@ insert into Courses (CourseName, CourseDescription)
 	values('History', 'Kolko chesto mislish rimskata imperia');
 insert into Courses (CourseName, CourseDescription) 
 	values('Physical Education', '20 licevi');
-
+-- (4)
 SELECT * FROM Students 
 WHERE Address = '123 Elm Street';
 
@@ -51,12 +51,14 @@ WHERE CourseName = 'Mathematics' OR CourseName = 'History';
 SELECT * FROM Students 
 WHERE Address IS NULL;
 
+-- (5)
 UPDATE Students 
 SET Address = '456 Oak Avenue' WHERE StudentID = 3;
 
 UPDATE Courses SET CourseDescription = 'An introduction to basic algebra and geometry.' 
 WHERE CourseName = 'Mathematics';
 
+-- (6)
 DELETE FROM Students 
 WHERE FirstName = 'Jane' AND LastName = 'Doe';
 
