@@ -58,3 +58,43 @@ SET Email = 'something_else@bing.org'
 WHERE StudentID = 2;
 
 SELECT * FROM Students;
+
+-- **Grading and Feedback**
+
+-- Let's break down the provided solution according to the tasks:
+
+-- 1. **Creation of Database:**
+--    - Drops the `SchoolDB` database if it exists, creates it anew, and sets it for subsequent operations. **✔️**
+
+-- 2. **Creation of Tables:**
+--    - Both `Students` and `Courses` tables are created as outlined in the assignment with suitable data types and constraints. Using `TINYTEXT` for names and addresses is unorthodox as it lacks some optimizations present for other text types like `VARCHAR`, but it should still work. **✔️**
+
+-- 3. **Data Insertion:**
+--    - Five students and four courses are inserted into their respective tables. The comments added some humor to the "creative" manual data insertion. **✔️**
+
+-- 4. **Data Retrieval:**
+--    - The query to fetch students living at "123 Elm Street" is accurate. **✔️**
+--    - The query to retrieve students named "Jhon" born on or after 2001 is correct. Note the typo in 'Jhon' rather than the more common 'John'. **✔️**
+--    - The query for fetching courses named "Mathematics" or "History" is accurate. **✔️**
+--    - The query to fetch students with a `NULL` address is correct. **✔️**
+
+-- 5. **Data Updating:**
+--    - The address of the student with `StudentID = 3` is updated as specified. **✔️**
+--    - The description of the "Mathematics" course is updated by appending to the existing description using the `CONCAT()` function. This approach maintains the original description while adding the specified text, which is a good touch. **✔️**
+
+-- 6. **Data Deletion:**
+--    - There's a slight issue in the query that attempts to delete a student named "Jane Doe". The `CONCAT` function has an extra pair of quotes which may prevent the operation from matching the name correctly. Instead, it should be `CONCAT(FirstName, ' ', LastName) = 'Jane Doe'`. **❌**
+--    - The "Physical Education" course is correctly deleted. **✔️**
+
+-- 7. **Bonus Task:**
+--    - The `ALTER TABLE` operation adds an `Email` column to the `Students` table. **✔️**
+--    - The email addresses for students with `StudentID = 1` and `StudentID = 2` are updated correctly. **✔️**
+--    - A final select statement displays the contents of the `Students` table. **✔️**
+
+-- **Summary:** 
+
+-- The solution is well-structured, organized, and follows the task requirements closely. Most operations are correct, with just one minor oversight in the deletion task. 
+
+-- **Grade:** 98/100 (Deduction due to the deletion error)
+
+-- Good work!
