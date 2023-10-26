@@ -22,10 +22,10 @@ VALUES
 ("1984", "George Orwell", "Dystopian", 1949, 1, 328),
 ("A Wrinkle in Time", "Madeleine L'Engle", "Sci-Fi", 1962, 3, 211);
 
--- SELECT * FROM Books;
--- SELECT * FROM Books WHERE Author = 'J.K. Rowling';
--- SELECT * FROM Books WHERE Genre = 'Classic' OR Genre = 'Dystopian';
--- SELECT * FROM Books WHERE Genre != 'Fantasy';
+SELECT * FROM Books;
+SELECT * FROM Books WHERE Author = 'J.K. Rowling';
+SELECT * FROM Books WHERE Genre = 'Classic' OR Genre = 'Dystopian';
+SELECT * FROM Books WHERE Genre != 'Fantasy';
 
 SELECT * FROM Books ORDER BY YearPublished;
 
