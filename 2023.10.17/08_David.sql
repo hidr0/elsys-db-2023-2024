@@ -69,3 +69,45 @@ ADD Email VARCHAR(100);
 UPDATE Students
 SET Email = 'john.doe@example.com'
 WHERE StudentID IN (1, 2);
+
+
+-- Let's review the provided SQL code:
+
+-- 1. **Database Creation**:
+--    - The code creates the `SchoolDB` database and sets it as the active database. **✔️**
+
+-- 2. **Table Creation**:
+--    - The `Students` table is created with appropriate columns including `Email` which was initially set in the bonus task of the previous example. **✔️**
+--    - The `Courses` table is also correctly defined. **✔️**
+
+-- 3. **Data Insertion**:
+--    - Five student records are inserted into the `Students` table with some having `NULL` addresses and emails. **✔️**
+--    - Three courses are inserted into the `Courses` table. **✔️**
+
+-- 4. **Data Retrieval**:
+--    - Retrieves students residing at '123 Elm Street'. **✔️**
+--    - Retrieves students named 'John' born after the year 2000. **✔️**
+--    - Retrieves the courses 'Mathematics' and 'History'. **✔️**
+--    - Retrieves students without an address. **✔️**
+
+-- 5. **Data Update**:
+--    - The address of the student with `StudentID = 3` is correctly updated. **✔️**
+--    - The description of the 'Mathematics' course is correctly updated. **✔️**
+
+-- 6. **Data Deletion**:
+--    - The student named 'Jane Doe' is correctly deleted from the database. **✔️**
+--    - No 'Physical Education' course was initially inserted, so the DELETE statement would not find a match and no action will be taken. It's an inconsistency in the provided script. **❌**
+
+-- 7. **Bonus Task (However, this was done at the start)**:
+--    - You're attempting to add the `Email` column again to the `Students` table, but this column was already defined when creating the table. This would lead to an error. **❌**
+--    - The emails for students with `StudentID = 1` and `StudentID = 2` are correctly updated. **✔️**
+
+-- **Summary**:
+-- The script mainly works as expected, with the exception of a redundant ALTER TABLE command and an inconsistent DELETE statement. 
+
+-- If this were based on the previous grading structure:
+-- **Grade**: 88/100
+
+-- Areas of Improvement:
+-- - Ensure that the sequence of commands does not lead to redundancy (like adding an already present column).
+-- - Align data manipulation commands (like DELETE) with the previously inserted data.
