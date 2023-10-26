@@ -56,6 +56,40 @@ ALTER TABLE Students ADD Email varchar(100);
 UPDATE Students SET Email = "tomi@example.com" 
 WHERE StudentID IN (1, 2);
 
+-- Let's grade the SQL script:
 
+-- 1. **Database Creation**:
+--     - Successful creation of the database: **10/10**.
+--     - However, after creating the database `SchoolDB`, the `USE` statement tries to use a different database `classwork3`. This is an error: **-5 points**.
+
+-- 2. **Table Creation**:
+--     - Creation of the `Students` table: **9/10**. One point is deducted for using the datatype `int` for DOB. This is unconventional and makes it hard to understand the date format.
+--     - Creation of the `Courses` table: **10/10**.
+
+-- 3. **Data Insertion**:
+--     - Insertion of records into the `Students` table: **10/10**.
+--     - Insertion of records into the `Courses` table: **10/10**.
+
+-- 4. **Data Retrieval**:
+--     - Retrieval of students living at '123 Elm Street': **10/10**.
+--     - Retrieval of students named 'John' born after the year 2000: **10/10** (however the unconventional date format was used correctly).
+--     - Retrieval of specific courses: **9/10**. One point is deducted since the course "History" wasn't inserted, so its inclusion in the retrieval seems redundant.
+--     - Retrieval of students with NULL addresses: **10/10**.
+
+-- 5. **Data Update**:
+--     - Updating student data (address): **10/10**.
+--     - Updating course data (course description): **10/10**.
+
+-- 6. **Data Deletion**:
+--     - Deleting the 'Jane Doe' student record: **10/10**.
+--     - Deleting the 'Physical Education' course: **10/10**.
+
+-- 7. **Table Alteration & Further Data Update**:
+--     - Addition of an Email column to the `Students` table: **10/10**.
+--     - Updating Email for specific students: **10/10**.
+
+-- **Total Score: 93/100**.
+
+-- Comments: The primary issues with this script are the use of an unconventional datatype for DOB and the discrepancy between the database creation and usage. Addressing these would make the script near perfect.
 
 
