@@ -59,3 +59,40 @@ WHERE StudentId = 1;
 UPDATE Students
 SET Email = "jivanov@bgmail.bg"
 WHERE StudentId = 2;
+
+
+-- The SQL script you provided performs the following tasks:
+
+-- 1. **Database Creation**:
+--     - If `SchoolDB` exists, it's dropped.
+--     - A new database `SchoolDB` is created and set as the active database. **✔️**
+
+-- 2. **Table Creation**:
+--     - Creates the `Students` and `Courses` tables with appropriate columns. **✔️**
+
+-- 3. **Data Insertion**:
+--     - Inserts eight students into the `Students` table. **✔️**
+--     - Inserts five courses into the `Courses` table. **✔️**
+
+-- 4. **Data Retrieval**:
+--     - Fetches the student living at "Elm Street 123". **✔️**
+--     - Retrieves students named 'John' with a DOB after December 31, 2000. **✔️**
+--     - Retrieves courses named 'Mathematics' or 'History'. **✔️**
+--     - Retrieves students without an address. **✔️**
+
+-- 5. **Data Update**:
+--     - Updates the address of the student with `StudentId = 3`. **✔️**
+--     - Updates the description of the 'Mathematics' course. **✔️**
+
+-- 6. **Data Deletion**:
+--     - Deletes the student named 'Jane Doe'. **✔️**
+--     - Deletes the course named 'Physical Education'. **✔️**
+
+-- 7. **Table Modification**:
+--     - Adds an 'Email' column to the `Students` table. **✔️**
+--     - Updates emails for the students with specific `StudentId`s. **✔️**
+
+-- **Summary**: 
+-- The script appears to be accurate and comprehensive. It's well-structured and performs a variety of SQL operations that are error-free based on the provided SQL. 
+
+-- **Grade**: 100/100.
