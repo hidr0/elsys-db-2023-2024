@@ -71,3 +71,39 @@ ADD Email VARCHAR(100);
 UPDATE Students
 SET Email = 'john.doe@example.com'
 WHERE StudentID IN (1, 2);
+
+-- Let's analyze the provided SQL script:
+
+-- 1. **Database Creation**:
+--    - It checks if the `SchoolDB` database exists, and if so, it drops it.
+--    - A new database named `SchoolDB` is created, and it's then set as the active database. **✔️**
+
+-- 2. **Table Creation**:
+--    - The `Students` table is correctly defined with the columns: StudentID, FirstName, LastName, DOB, and Address. **✔️**
+--    - The `Courses` table is correctly defined with the columns: CourseID, CourseName, and CourseDescription. **✔️**
+
+-- 3. **Data Insertion**:
+--    - Five students are inserted into the `Students` table. The data seems to fit the structure of the table. **✔️**
+--    - Three courses are inserted into the `Courses` table. However, the description for the 'Mathematics' course seems to be mismatched, as it refers to "football" instead of something math-related. **❌**
+
+-- 4. **Data Retrieval**:
+--    - It fetches students living at '123 Elm Street'. **✔️**
+--    - It retrieves students named 'John' born after December 31, 1999. **✔️**
+--    - It fetches courses named 'Mathematics' or 'History'. **✔️**
+--    - It retrieves students without an address. Given the data, it will return the student named 'John Henry'. **✔️**
+
+-- 5. **Data Update**:
+--    - The address of the student with `StudentID = 3` is updated. **✔️**
+--    - The description of the 'Mathematics' course is updated, which corrects the mismatched description from earlier. **✔️**
+
+-- 6. **Data Deletion**:
+--    - The student named 'Jane Doe' is deleted. **✔️**
+--    - The 'Physical Education' course is deleted. **✔️**
+
+-- 7. **Table Modification**:
+--    - An 'Email' column is added to the `Students` table. **✔️**
+--    - Emails are set for the students with `StudentID = 1` and `StudentID = 2`. **✔️**
+
+-- **Summary**: The script accomplishes most tasks properly. There's a slight mismatch in the initial description of the 'Mathematics' course, which is later corrected. The data modification, deletion, and table alterations are all accurate.
+
+-- **Grade**: 98/100 (Everything is correct with the exception of the initial mismatched course description.)
