@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS SchoolLibrary;
-
+DROP DATABASE IF EXISTS SchoolLibrary;
+CREATE DATABASE SchoolLibrary;
 USE SchoolLibrary;
 
 CREATE TABLE IF NOT EXISTS Books (
@@ -19,7 +19,6 @@ VALUES
     ("The Great Gatsby", "F. Scott Fitzgerald", "Classic", 1925, 3, 180),
     ("1984", "George Orwell", "Dystopian", 1949, 1, 328),
     ("A Wrinkle in Time", "Madeleine L'Engle", "Sci-Fi", 1962, 3, 211);
-
 
 SELECT * FROM Books;
 
@@ -43,12 +42,11 @@ WHERE Title = "To Kill a Mockingbird";
 
 SELECT * FROM Books LIMIT 3;
 
+SELECT * FROM Books
+ORDER BY YearPublished ASC LIMIT 1;
 
-SELECT * FROM Books 
-WHERE TotalPages = (SELECT MIN(TotalPages) FROM Books);
-
-SELECT * FROM Books 
-WHERE TotalPages = (SELECT MAX(TotalPages) FROM Books);
+SELECT * FROM Books
+ORDER BY YearPublished DESC LIMIT 1;
 
 SELECT COUNT(*) FROM Books;
 
@@ -60,7 +58,8 @@ SELECT * FROM Books
 WHERE Title LIKE 'The%';
 
 ALTER TABLE Books
-ADD ISBN VARCHAR(100);
+ADD COLUMN ISBN VARCHAR(100);
+
 SELECT * from Books;
 
 UPDATE Books SET ISBN = NULL;
