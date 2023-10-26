@@ -61,3 +61,50 @@ ALTER TABLE Students ADD COLUMN Email VARCHAR(100);
 -- Обновяване на записите на студентите с ID = 1 и 2 с имейл адреси
 UPDATE Students SET Email = 'john.doe@example.com' WHERE StudentID = 1;
 UPDATE Students SET Email = 'jane.smith@example.com' WHERE StudentID = 2;
+
+
+-- Your SQL script does the following:
+
+-- 1. **Database Creation**:
+--     - Creates a new database named `SchoolDB` and sets it as the current database.
+
+-- 2. **Table Creation**:
+--     - Creates a `Students` table. 
+--     - Creates a `Courses` table. 
+
+-- 3. **Data Insertion**:
+--     - Inserts 5 student records into the `Students` table.
+--     - Inserts 3 course records into the `Courses` table.
+
+-- 4. **Data Retrieval**:
+--     - Retrieves students living at '123 Elm Street'.
+--     - Retrieves students named 'John' who were born after January 1, 2000.
+--     - Retrieves courses named 'Mathematics' or 'History'.
+--     - Retrieves students who don't have an address specified.
+
+-- 5. **Data Update**:
+--     - Updates the address for the student with `StudentID = 3`.
+
+-- 6. **Data Deletion**:
+--     - Deletes the student named 'Jane Smith'.
+--     - Tries to delete a course named 'Physical Education', but this course does not exist in your inserted data.
+
+-- 7. **Table Alteration**:
+--     - Adds a new column `Email` to the `Students` table.
+
+-- 8. **Further Data Update**:
+--     - Updates the email address for two students.
+
+-- **Issues**:
+-- 1. There's a comma at the end of the columns list in the `Students` table definition, which would cause a syntax error. Remove the trailing comma after the `Address VARCHAR(100)` line.
+   
+-- 2. You have a mismatch in your operations. You are trying to insert an `Email` column into `Students` before you've actually created that column. The INSERT statement for students tries to insert into an 'Email' column that doesn't exist yet.
+   
+-- 3. You're trying to delete from a course named 'Physical Education' that doesn't exist in the data you've inserted.
+
+-- **Recommendations**:
+-- 1. Remove the trailing comma in the `Students` table definition.
+-- 2. Either move the `ALTER TABLE Students ADD COLUMN Email VARCHAR(100);` statement to be before the student insertion or remove the `Email` from the student insertion statement.
+-- 3. You might want to remove the DELETE statement for 'Physical Education' or add an INSERT statement that adds this course if the intent is to demonstrate a DELETE operation.
+
+-- Once these issues are addressed, your script should run without errors.
