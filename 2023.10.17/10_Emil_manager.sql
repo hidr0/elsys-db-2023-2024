@@ -26,7 +26,7 @@ INSERT INTO Students (FirstName, LastName, DOB, Address)
 VALUES ('Emil', 'Kostadinov', '2006-07-12', 'Mala koria 21'),
        ('Mihail', 'Kirilov', '2000-11-01', 'Manastirski livadi'),
        ('Kris', 'Petkov', '2006-05-21', 'Lulin 7'),
-       ('Vikito', 'Velkov', '2006-04-20', 'Sveta troica');
+       ('Viktor', 'Velkov', '2006-04-20', 'Sveta troica');
 
 INSERT INTO Courses (CourseName, CourseDescription) 
 VALUES ('Database', 'Database creation and uses.'),
@@ -37,7 +37,7 @@ VALUES ('Database', 'Database creation and uses.'),
 
 SELECT * FROM Students WHERE Address = 'Mala koria 21';
 SELECT * FROM Students WHERE FirstName = 'Emil' AND DOB > '2000-01-01';
-SELECT * FROM Courses WHERE CourseName = 'Database' OR CourseName = 'Software developmenet';
+SELECT * FROM Courses WHERE CourseName = 'Database' OR CourseName = 'Software development';
 SELECT * FROM Students WHERE Address IS NULL;
 
 -- 5
