@@ -42,7 +42,9 @@ DELETE FROM Books WHERE Title = "1984";
 SELECT * FROM Books LIMIT 3;
 
 -- (8)
-SELECT MIN(TotalPages) AS MinPages, MAX(TotalPages) AS MaxPages FROM Books;
+SELECT * FROM Books ORDER BY TotalPages ASC LIMIT 1;
+SELECT * FROM Books ORDER BY TotalPages DESC LIMIT 1;
+
 SELECT COUNT(*) AS TotalBooks FROM Books;
 SELECT AVG(TotalPages) AS AvgPages FROM Books;
 SELECT SUM(TotalPages) AS TotalPages FROM Books;
