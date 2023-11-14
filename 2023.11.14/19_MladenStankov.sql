@@ -1,74 +1,92 @@
--- Delete database if exists
-DROP DATABASE IF EXISTS SchoolLibrary;
+-- Drop the CarManagement database if it exists
+DROP DATABASE IF EXISTS CarManagement;
 
--- Create the SchoolLibrary database
-CREATE DATABASE SchoolLibrary;
+-- Create the CarManagement database
+CREATE DATABASE CarManagement;
 
--- Switch to the SchoolLibrary database
-USE SchoolLibrary;
+-- Use the CarManagement database
+USE CarManagement;
 
--- Create the Books table with specified attributes
-CREATE TABLE Books (
-    BookID INT AUTO_INCREMENT PRIMARY KEY,   
-    Title VARCHAR(255),
-    Author VARCHAR(255),
-    Genre VARCHAR(255),
-    YearPublished INT,
-    CopiesAvailable INT,
-    TotalPages INT
+-- Create Cars table with an auto-incrementing primary key
+CREATE TABLE IF NOT EXISTS Cars (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    model VARCHAR(50) NOT NULL,
+    make VARCHAR(50) NOT NULL,
+    year INT NOT NULL,
+    color VARCHAR(20) NOT NULL
 );
 
--- Insert sample data for at least five different books into the Books table
-INSERT INTO Books (Title, Author, Genre, YearPublished, CopiesAvailable, TotalPages)
-VALUES
-    ('Harry Potter and the Sorcerer''s Stone', 'J.K. Rowling', 'Fantasy', 1997, 10, 320),
-    ('To Kill a Mockingbird', 'Harper Lee', 'Classic', 1960, 5, 281),
-    ('1984', 'George Orwell', 'Dystopian', 1949, 3, 328),
-    ('The Great Gatsby', 'F. Scott Fitzgerald', 'Classic', 1925, 7, 180),
-    ('The Hobbit', 'J.R.R. Tolkien', 'Fantasy', 1937, 8, 310);
+-- Create Drivers table with an auto-incrementing primary key
+CREATE TABLE IF NOT EXISTS Drivers (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    license_number VARCHAR(20) NOT NULL,
+    experience_years INT NOT NULL
+);
 
--- List all the books in the database
-SELECT * FROM Books;
+-- 0
+-- Insert 5 cars
+INSERT INTO Cars (model, make, year, color) VALUES
+('Civic', 'Honda', 2022, 'Blue'),
+('Accord', 'Honda', 2015, 'Black'),
+('Camry', 'Toyota', 2018, 'White'),
+('Mustang', 'Ford', 2010, 'Red'),
+('Prius', 'Toyota', 2021, 'Green');
 
--- Find books written by "J.K. Rowling"
-SELECT * FROM Books WHERE Author = 'J.K. Rowling';
+-- Insert 5 drivers
+INSERT INTO Drivers (name, license_number, experience_years) VALUES
+('John Smith', 'A12345', 6),
+('Alice Johnson', 'B67890', 3),
+('Bob Anderson', 'C54321', 7),
+('Pesho Petrov', 'A98765', 2),
+('Zara Doe', 'D87654', 4);
 
--- Find books that belong to the "Classic" or "Dystopian" genre
-SELECT * FROM Books WHERE Genre = 'Classic' OR Genre = 'Dystopian';
+-- 1
+-- Retrieve all car models made after the year 2010.
+SELECT model FROM Cars WHERE year > 2010;
 
--- Find books that are not from the "Fantasy" genre
-SELECT * FROM Books WHERE NOT Genre = 'Fantasy';
+-- Find the names of drivers who have more than 5 years of experience.
+SELECT name FROM Drivers WHERE experience_years > 5;
 
--- List all books, ordered by the YearPublished column
-SELECT * FROM Books ORDER BY YearPublished;
+-- Display the make and model of cars that are either black or white.
+SELECT make, model FROM Cars WHERE color IN ('Black', 'White');
 
--- Update the "CopiesAvailable" column for a specific book (e.g., BookID 1)
-UPDATE Books SET CopiesAvailable = 12 WHERE BookID = 1;
+-- 2
+-- Update the experience years of a driver with the name 'Pesho' by increasing it by 1 year.
+UPDATE Drivers SET experience_years = experience_years + 1 WHERE name = 'Pesho';
 
--- Delete a book from the table based on its title
-DELETE FROM Books WHERE Title = '1984';
+-- 3
+-- Delete records of cars that are older than 20 years.
+DELETE FROM Cars WHERE year < YEAR(NOW()) - 20;
 
--- Display only the first three books in the table
-SELECT * FROM Books LIMIT 3;
 
--- Find the book with the minimum and maximum number of pages
-SELECT * FROM Books ORDER BY TotalPages ASC LIMIT 1;
-SELECT * FROM Books ORDER BY TotalPages DESC LIMIT 1;
+-- 6
+-- Find all cars that are either red or have been manufactured after 2015.
+SELECT * FROM Cars WHERE color = 'Red' OR year > 2015;
 
--- Count the total number of books in the library
-SELECT COUNT(*) FROM Books;
+-- List drivers who have either less than 2 years of experience or hold a license number starting with 'A'.
+SELECT * FROM Drivers WHERE experience_years < 2 OR license_number LIKE 'A%';
 
--- Find the average number of pages across all books
-SELECT AVG(TotalPages) FROM Books;
+-- Retrieve all car models whose name starts with 'A'.
+SELECT model FROM Cars WHERE model LIKE 'A%';
 
--- Calculate the total number of pages in the library
-SELECT SUM(TotalPages) FROM Books;
+-- Find all drivers whose names contain the substring 'John'.
+SELECT * FROM Drivers WHERE name LIKE '%John%';
 
--- Find books that have a title starting with "The"
-SELECT * FROM Books WHERE Title LIKE 'The%';
+-- 7
+-- Find the car model with the maximum year (most recent).
+SELECT model FROM Cars WHERE year = (SELECT MAX(year) FROM Cars);
 
--- Add a new column for "ISBN" which can be NULL to the Books table
-ALTER TABLE Books ADD COLUMN ISBN VARCHAR(255);
+-- Count the number of drivers with more than 3 years of experience.
+SELECT COUNT(*) FROM Drivers WHERE experience_years > 3;
 
--- Find books where the ISBN value is NULL
-SELECT * FROM Books WHERE ISBN IS NULL;
+-- Calculate the average year of all the cars (i.e., the average manufacturing year).
+SELECT ROUND(AVG(year)) FROM Cars;
+
+-- 8
+-- Retrieve the oldest car in the database.
+SELECT * FROM Cars WHERE year = (SELECT MIN(year) FROM Cars);
+
+-- Retrieve the youngest driver who has a "z" in the name in the database.
+SELECT * FROM Drivers WHERE name LIKE '%z%' ORDER BY experience_years DESC LIMIT 1;
+
