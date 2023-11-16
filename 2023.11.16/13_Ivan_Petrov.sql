@@ -1,9 +1,7 @@
--- Create the ComputerStore database
 DROP DATABASE IF EXISTS ComputerStore;
 CREATE DATABASE ComputerStore;
 USE ComputerStore;
 
--- Products: Stores information about computers for sale
 CREATE TABLE Products (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100),
@@ -21,7 +19,6 @@ INSERT INTO Products(name, description, price, stock_quantity, category) VALUES
 	("IPad Air II", "The tablet of tablets", 1000, 1, "tablet");
 
 
--- Stores information about customers
 CREATE TABLE Customers (
     id INT AUTO_INCREMENT PRIMARY KEY,
     full_name VARCHAR(100),
@@ -33,7 +30,6 @@ INSERT INTO Customers(full_name, email, address) VALUES
 	("Bay Ganyo", "bayganyo@abv.bg", "Chicago");
 
 
--- Orders: Stores information about customer orders
 CREATE TABLE Orders (
     id INT AUTO_INCREMENT PRIMARY KEY,
     order_date DATETIME,
