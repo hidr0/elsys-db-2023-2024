@@ -41,6 +41,10 @@ CREATE TABLE Orders(
     order_date datetime,
     total_amount int,
     customer_id int,
-    FOREIGN KEY(customer_id) REFERENCES Customers(id)
-	
+    FOREIGN KEY(customer_id) REFERENCES Customers(id)	
 );
+
+SELECT * FROM Customers;
+INSERT INTO Orders(order_date, total_amount, customer_id)
+	VALUES("2023-01-01 00:00:12", 7200, 1);
+    
