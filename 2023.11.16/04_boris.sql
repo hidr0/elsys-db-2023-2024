@@ -4,7 +4,7 @@ CREATE DATABASE ComputerStore;
 USE ComputerStore;
 
 -- Products: Stores information about computers for sale
-CREATE TABLE IF NOT EXISTS Products (
+CREATE TABLE Products (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100),
     description VARCHAR(255),
@@ -22,7 +22,7 @@ INSERT INTO Products(name, description, price, stock_quantity, category) VALUES
 
 
 -- Stores information about customers
-CREATE TABLE IF NOT EXISTS Customers (
+CREATE TABLE Customers (
     id INT AUTO_INCREMENT PRIMARY KEY,
     full_name VARCHAR(100),
     email VARCHAR(100),
@@ -34,7 +34,7 @@ INSERT INTO Customers(full_name, email, address) VALUES
 
 
 -- Orders: Stores information about customer orders
-CREATE TABLE IF NOT EXISTS Orders (
+CREATE TABLE Orders (
     id INT AUTO_INCREMENT PRIMARY KEY,
     order_date DATETIME,
     total_amount INT,
