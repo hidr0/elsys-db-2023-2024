@@ -35,3 +35,12 @@ CREATE TABLE Customers(
 
 INSERT INTO Customers(full_name, email, address)
 	VALUES("Mihail Kirilov", "mkirilov@elsys-bg.org", "TUES");
+    
+CREATE TABLE Orders(
+	id int primary key AUTO_INCREMENT,
+    order_date datetime,
+    total_amount int,
+    customer_id int,
+    FOREIGN KEY(customer_id) REFERENCES Customers(id)
+	
+);
