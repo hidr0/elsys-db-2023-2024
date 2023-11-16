@@ -13,7 +13,7 @@ CREATE TABLE Products(
 
 
 INSERT INTO Products(name, description, price, stock_quantity, category) 
-	VALUES("Macbook Pro 8GB", "Very fast laptop", 3200, 42, "laptop");
+	VALUES("Macbook Pro 8GB", "Very fast laptop", 960, 42, "laptop");
 
 INSERT INTO Products(name, description, price, stock_quantity, category) 
 	VALUES("Macbook Pro 16GB", "Very fast laptop", 3600, 10, "laptop");
@@ -44,7 +44,9 @@ CREATE TABLE Orders(
     FOREIGN KEY(customer_id) REFERENCES Customers(id)	
 );
 
-SELECT * FROM Customers;
 INSERT INTO Orders(order_date, total_amount, customer_id)
 	VALUES("2023-01-01 00:00:12", 7200, 1);
-    
+
+-- Retrieve all products in the 'Laptop' category that are priced above $1000.
+-- SELECT * FROM Products
+-- WHERE category = "laptop" AND price < 1000;
