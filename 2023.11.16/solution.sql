@@ -24,3 +24,14 @@ INSERT INTO Products(name, description, price, stock_quantity, category)
 
 INSERT INTO Products(name, description, price, stock_quantity, category) 
 	VALUES("Ipad Air II", "The tablet of tablets", 1000, 1, "tablet");
+    
+    
+CREATE TABLE Customers(
+	id int primary key AUTO_INCREMENT,
+    full_name varchar(200),
+    email varchar(200),
+    address varchar(200)
+);
+
+INSERT INTO Customers(full_name, email, address)
+	VALUES("Mihail Kirilov", "mkirilov@elsys-bg.org", "TUES");
