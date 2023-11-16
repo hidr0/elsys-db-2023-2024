@@ -34,7 +34,16 @@ CREATE TABLE Customers(
 );
 
 INSERT INTO Customers(full_name, email, address)
-	VALUES("Mihail Kirilov", "mkirilov@elsys-bg.org", "TUES");
+	VALUES("Mihail Kirilov 1", "mkirilov@elsys-bg.org", "TUES");
+    
+    INSERT INTO Customers(full_name, email, address)
+	VALUES("Mihail Kirilov 1", "mkirilov@elsys-bg.org", "TUES");
+    
+    INSERT INTO Customers(full_name, email, address)
+	VALUES("Mihail Kirilov 2", "mkirilov@elsys-bg.org", "TUES");
+    
+    INSERT INTO Customers(full_name, email, address)
+	VALUES("Mihail Kirilov 2", "mkirilov@elsys-bg.org", "Mladost");
     
 CREATE TABLE Orders(
 	id int primary key AUTO_INCREMENT,
@@ -70,3 +79,11 @@ INSERT INTO Orders(order_date, total_amount, customer_id)
 
 SELECT * FROM Orders
 WHERE DAYOFWEEK(order_date) IN (1,7);
+
+-- Display a list of unique customer addresses.
+SELECT DISTINCT address, full_name from Customers;
+
+-- List the top 3 most expensive products, sorted by price in descending order.
+SELECT * FROM Products
+ORDER BY price desc
+LIMIT 3;
