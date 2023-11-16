@@ -63,3 +63,10 @@ INSERT INTO Orders(order_date, total_amount, customer_id)
 -- List the details of orders placed in the last 30 days.
 -- SELECT * FROM Orders
 -- WHERE order_date < "2023-10-16";
+
+
+-- SELECT * FROM Orders
+-- WHERE order_date > CURDATE() - interval 30 day;
+
+SELECT * FROM Orders
+WHERE DAYOFWEEK(order_date) IN (1,7);
