@@ -1,0 +1,64 @@
+INSERT INTO Orders (customer_id, order_date, total_amount) VALUES (1, '2023-10-26', 1500);
+INSERT INTO OrderDetails (order_id, product_id, quantity, price) VALUES (1, 101, 2, 800);
+INSERT INTO OrderDetails (order_id, product_id, quantity, price) VALUES (1, 102, 1, 700);
+
+SELECT * FROM Products WHERE category = 'Laptop' AND price > 1000;
+
+SELECT full_name, email FROM Customers
+JOIN Orders ON Customers.customer_id = Orders.customer_id
+GROUP BY Customers.customer_id
+HAVING COUNT(Orders.order_id) > 3;
+
+SELECT name FROM Products WHERE stock_quantity = 0;
+
+SELECT * FROM Orders WHERE order_date >= CURDATE() - INTERVAL 30 DAY;
+
+UPDATE Products SET stock_quantity = stock_quantity + 50 WHERE product_id = 105;
+
+DELETE FROM Products WHERE stock_quantity = 0 AND discontinued = 1;
+
+SELECT * FROM Orders WHERE DAYOFWEEK(order_date) IN (1, 7);
+
+SELECT * FROM Products WHERE DATE_ADDED >= CURDATE() - INTERVAL 6 MONTH;
+
+SELECT DISTINCT address FROM Customers;
+
+SELECT * FROM Products ORDER BY price DESC LIMIT 10;
+
+SELECT name FROM Products WHERE name LIKE '%Gaming%';
+
+SELECT full_name FROM Customers WHERE full_name LIKE 'J%';
+
+SELECT category, AVG(price) FROM Products GROUP BY category;
+
+SELECT MONTH(order_date) AS month, COUNT(order_id) AS total_orders FROM Orders GROUP BY month;
+
+SELECT category, MAX(price) AS max_price FROM Products GROUP BY category;
+
+SELECT SUM(quantity * price) AS total_revenue FROM OrderDetails
+JOIN Products ON OrderDetails.product_id = Products.product_id
+WHERE category = 'Desktop';
+
+SELECT full_name, email, SUM(quantity * price) AS total_spent
+FROM Customers
+JOIN Orders ON Customers.customer_id = Orders.customer_id
+JOIN OrderDetails ON Orders.order_id = OrderDetails.order_id
+JOIN Products ON OrderDetails.product_id = Products.product_id
+GROUP BY Customers.customer_id;
+
+SELECT * FROM Products
+LEFT JOIN OrderDetails ON Products.product_id = OrderDetails.product_id
+WHERE OrderDetails.product_id IS NULL;
+
+SELECT Orders.order_id, full_name, product_id, name, quantity, price
+FROM Orders
+JOIN Customers ON Orders.customer_id = Customers.customer_id
+JOIN OrderDetails ON Orders.order_id = OrderDetails.order_id
+JOIN Products ON OrderDetails.product_id = Products.product_id;
+
+SELECT Customers.full_name, Customers.email
+FROM Customers
+LEFT JOIN Orders ON Customers.customer_id = Orders.customer_id
+LEFT JOIN OrderDetails ON Orders.order_id = OrderDetails.order_id
+LEFT JOIN Products ON OrderDetails.product_id = Products.product_id
+WHERE category = 'Tablet' AND Products.product_id IS NULL;
