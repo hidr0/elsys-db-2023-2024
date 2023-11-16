@@ -50,3 +50,8 @@ INSERT INTO Orders(order_date, total_amount, customer_id)
 -- Retrieve all products in the 'Laptop' category that are priced above $1000.
 -- SELECT * FROM Products
 -- WHERE category = "laptop" AND price < 1000;
+
+
+-- Retrieve the names of all products that are out of stock.
+-- SELECT name FROM Products 
+-- WHERE stock_quantity = 0;
