@@ -57,7 +57,7 @@ INSERT INTO Orders(order_date, total_amount, customer_id)
 	VALUES("2023-01-01 00:00:12", 7200, 1);
     
     INSERT INTO Orders(order_date, total_amount, customer_id)
-	VALUES("2023-11-16 00:00:12", 7200, 1);
+	VALUES("2023-11-16 00:00:12", 10000, 4);
 
 -- Retrieve all products in the 'Laptop' category that are priced above $1000.
 -- SELECT * FROM Products
@@ -85,5 +85,17 @@ SELECT DISTINCT address, full_name from Customers;
 
 -- List the top 3 most expensive products, sorted by price in descending order.
 SELECT * FROM Products
-ORDER BY price desc
+ORDER BY price asc
 LIMIT 3;
+
+-- Determine the average price of products in each category.
+SELECT SUM(price), category FROM Products
+GROUP BY category;
+
+SELECT * FROM Customers;
+SELECT * FROM Orders;
+
+-- Как да извадим кой човек е нарпавил коя поръчка.
+SELECT Customers.id as "CustomerId", order_date, total_amount, full_name, address FROM Orders
+LEFT JOIN Customers
+ON Customers.id = Orders.customer_id;
