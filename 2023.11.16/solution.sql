@@ -46,6 +46,9 @@ CREATE TABLE Orders(
 
 INSERT INTO Orders(order_date, total_amount, customer_id)
 	VALUES("2023-01-01 00:00:12", 7200, 1);
+    
+    INSERT INTO Orders(order_date, total_amount, customer_id)
+	VALUES("2023-11-16 00:00:12", 7200, 1);
 
 -- Retrieve all products in the 'Laptop' category that are priced above $1000.
 -- SELECT * FROM Products
@@ -55,3 +58,8 @@ INSERT INTO Orders(order_date, total_amount, customer_id)
 -- Retrieve the names of all products that are out of stock.
 -- SELECT name FROM Products 
 -- WHERE stock_quantity = 0;
+
+
+-- List the details of orders placed in the last 30 days.
+-- SELECT * FROM Orders
+-- WHERE order_date < "2023-10-16";
