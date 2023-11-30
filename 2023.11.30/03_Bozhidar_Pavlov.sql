@@ -24,7 +24,7 @@ create table students(
 insert into students(name, address_id)
 values
 	("Bozho", 1),
-   --  ("Pesho", 1), -- Error Code: 1062. Duplicate entry '1' for key 'students.address_id'
+	-- ("Pesho", 1), -- Error Code: 1062. Duplicate entry '1' for key 'students.address_id'
 	("Strahil", 2);
 
 select * from students;
