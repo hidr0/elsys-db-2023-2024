@@ -66,7 +66,7 @@ SELECT Student.*, COUNT(Grade.grade) FROM Student LEFT JOIN Grade ON Grade.stude
 
 SELECT Student.*, Grade.grade, Subject.* FROM Grade LEFT JOIN Student ON Grade.student_id = Student.id LEFT JOIN Subject ON Grade.subject_id = Subject.id;
 SELECT Student.*, Subject.*, AVG(Grade.grade) 
-FROM Grade 
-LEFT JOIN Student ON Grade.student_id = Student.id 
+FROM Student
+LEFT JOIN Grade ON Grade.student_id = Student.id 
 LEFT JOIN Subject ON Grade.subject_id = Subject.id 
 GROUP BY Student.id, Subject.id, Student.name, Subject.name;
