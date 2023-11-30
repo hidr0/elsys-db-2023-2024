@@ -1,80 +1,96 @@
-DROP DATABASE IF EXISTS ComputerStore;
-CREATE DATABASE ComputerStore;
-USE ComputerStore;
+DROP DATABASE IF EXISTS school;
+CREATE DATABASE school;
+USE school;
 
-CREATE TABLE Products (
-    product_id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100),
-    description VARCHAR(255),
-    price FLOAT,
-    stock_quantity INT,
-    category ENUM("laptop", "dekstop", "tablet")
+CREATE TABLE Address(
+	id int PRIMARY KEY AUTO_INCREMENT,
+    street varchar(200)
 );
 
-CREATE TABLE Customers (
-    customer_id INT AUTO_INCREMENT PRIMARY KEY,
-    full_name VARCHAR(255),
-    email VARCHAR(255),
-    address VARCHAR(255)
+CREATE TABLE Student(
+	id int PRIMARY KEY AUTO_INCREMENT,
+    name varchar(200) not null unique,
+    address_id int not null,
+    Foreign KEY(address_id) REFERENCES Address(id)
 );
 
-CREATE TABLE Orders (
-    order_id INT AUTO_INCREMENT PRIMARY KEY,
-    customer_id INT,
-    FOREIGN KEY (customer_id) REFERENCES Customers(customer_id),
-    order_date DATETIME,
-    total_amount INT
+CREATE TABLE Subject(
+	id int PRIMARY KEY AUTO_INCREMENT,
+    name ENUM("Meth", "Bazi")
 );
 
-INSERT INTO Products(name, description, price, stock_quantity, category)
-VALUES("MackBook 4gb", "Shit laptop", 3000, 30, "laptop"),
-	("MackBook 8gb", "Big Shit laptop", 3200, 17, "laptop"),
-	("MackBook 16gb", "Ultra Shit laptop", 3700, 8, "laptop"),
-	("MackBook 32gb", "Mega Shit laptop", 4300, 0, "laptop"),
-    ("ACer Aspire V15", "Good laptop, fair price", 810, 21, "laptop"),
-    ("Razer Gaming Laptop", "laptop for games", 2430, 12, "laptop");
+CREATE TABLE Grade(
+	id int PRIMARY KEY AUTO_INCREMENT,
+    grade int not null check(grade in (2,3,4,5,6)),
+    subject_id int not null,
+    FOREIGN KEY(subject_id) REFERENCES Subject(id),
+    student_id int not null,
+    FOREIGN KEY(student_id) REFERENCES Student(id)
+);
 
-INSERT INTO Customers(full_name, email, address) 
-VALUES("Batman", "lidl@bat.man", "navsqkude"),
-	("Jacob Vazovski", "brrr@gmail.com", "Sofia");
+INSERT INTO Address(street) values("MLadost4, bl 437");
+INSERT INTO Address(street) values("Malinova dolina, bl 70");
 
-INSERT INTO Orders(order_date, total_amount, customer_id) VALUES("2023-01-01 00:00:12", 7200, 1);
+select * from Address;
 
-SELECT * FROM Products
-WHERE category = "laptop" AND price < 1000;
+INSERT INTO Student(name, address_id) values("Pepi", 1);
+INSERT INTO Student(name, address_id) values("Misho", 2);
 
-SELECT name FROM Products 
-WHERE stock_quantity = 0;
+INSERT INtO Subject(name) VALUES("Meth");
+INSERT INtO Subject(name) VALUES("Bazi");
+SELECT * FROM Subject;
 
-SELECT * FROM Orders
-WHERE order_date < "2023-10-16";
+INSERT INTO Grade(grade, subject_id, student_id) VALUES(6, 1, 1);
+INSERT INTO Grade(grade, subject_id, student_id) VALUES(5, 1, 1);
 
-SELECT * FROM Orders
-WHERE order_date > CURDATE() - interval 30 day;
+INSERT INTO Grade(grade, subject_id, student_id) VALUES(4, 2, 2);
+INSERT INTO Grade(grade, subject_id, student_id) VALUES(3, 1, 2);
 
-SELECT * FROM Orders
-WHERE DAYOFWEEK(order_date) IN (1,7);
+INSERT INTO Address(street) values("TUES");
+INSERT INTO Student(name, address_id) values("Bez ocenka", 3);
 
-SELECT DISTINCT address, full_name from Customers;
+SELECT Student.name, grade FROM Grade
+LEFT JOIN Student
+ON student_id = Student.id;
 
-SELECT * FROM Products ORDER BY price desc LIMIT 3;
 
-SELECT SUM(price), category FROM Products
-GROUP BY category;
+-- [Улица, Ученик] За всеки ученик.
+SELECT name, Address.street FROM Student
+LEFT JOIN Address
+On address_id = Address.id;
 
-SELECT * FROM Customers;
-SELECT * FROM Orders;
+-- [Ученик, оценка] За всяка оценка.
+SELECT Student.name, grade FROM Grade
+LEFT JOIN Student
+ON student_id = Student.id;
 
--- 2
-UPDATE Products 
-SET stock_quantity = stock_quantity + 5 
-WHERE product_id = 2;
+-- [Ученик, среден успех] За всеки ученик сортирани от най-нисък към най-голям.
+SELECT Student.name, AVG(Grade.grade) FROM Student
+LEFT JOIN Grade ON Student.id = Grade.student_id
+GROUP BY Student.id, Student.name
+ORDER BY AVG(Grade.grade);
 
--- 3
-SET SQL_SAFE_UPDATES = 0;
-DELETE FROM Products WHERE stock_quantity = 0;
-SET SQL_SAFE_UPDATES = 1;
+-- Името на ученика с най-висок среден успех.
+SELECT Student.name, AVG(Grade.grade) FROM Student
+LEFT JOIN Grade ON Student.id = Grade.student_id
+GROUP BY Student.id, Student.name
+ORDER BY AVG(Grade.grade) DESC LIMIT 1;
 
--- 14
-SELECT name FROM Products WHERE name LIKE '%Gaming%';
-SELECT full_name FROM Customers WHERE full_name LIKE 'J%';
+-- [Ученик, брой оценки] За всеки ученик.
+SELECT Student.name, Count(Grade.id) FROM Student
+LEFT JOIN Grade ON Student.id = Grade.student_id
+GROUP BY Student.name;
+
+-- [Ученик, оценка, предмет] За всяка оценка.
+SELECT Student.name, grade, Subject.name FROM Grade
+LEFT JOIN Student
+ON student_id = Student.id
+LEFT JOIN Subject
+ON subject_id = Subject.id;
+
+-- [Ученик, предмет, среден успех] Всеки ученик.
+SELECT Student.name, Subject.name, AVG(Grade.grade) FROM Student
+LEFT JOIN Grade ON Student.id = Grade.student_id
+LEFT JOIN Subject ON Grade.subject_id = Subject.id
+GROUP BY Student.id, Student.name, Subject.id, Subject.name
+ORDER BY Student.name, Subject.name;
