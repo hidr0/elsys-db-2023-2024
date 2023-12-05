@@ -98,4 +98,4 @@ ON Student.id = Grade.student_id
 LEFT JOIN Subject
 ON Grade.subject_id = Subject.id
 GROUP BY Student.id, Subject.id
-ORDER BY Student.name, Subject.name;
+ORDER BY Student.id, Subject.id;
