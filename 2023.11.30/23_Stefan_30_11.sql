@@ -84,11 +84,11 @@ LEFT JOIN Address ON Student.address_id = Address.id;
 
 --  [ученик, предемт, оценка] за всеку оценка.
 SELECT Student.name, Grade.grade, Subject.name FROM Grade
-JOIN Student ON Grade.student_id = Student.id
-JOIN Subject ON Grade.subject_id = Subject.id;
+LEFT JOIN Student ON Grade.student_id = Student.id
+LEFT JOIN Subject ON Grade.subject_id = Subject.id;
 
 --  [ученик, предемт, среден успех] за всеку уч.
 SELECT Student.name, Subject.name, AVG(Grade.grade) AS average_grade FROM Student
-JOIN Grade ON Student.id = Grade.student_id
-JOIN Subject ON Grade.subject_id = Subject.id
+LEFT JOIN Grade ON Student.id = Grade.student_id
+LEFT JOIN Subject ON Grade.subject_id = Subject.id
 GROUP BY Student.id, Subject.id;
