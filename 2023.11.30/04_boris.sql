@@ -87,22 +87,35 @@ SELECT * FROM Student LIMIT 20;
 SELECT * FROM Subject LIMIT 20;
 
 -- (1) {улица, ученик} за всеки ученик
-SELECT Address.street, Student.name FROM Student JOIN Address ON Address.id = Student.address_id LIMIT 20;
+SELECT Address.street, Student.name
+FROM Student JOIN Address ON Address.id = Student.address_id LIMIT 20;
 
 -- (2) {ученик, оценка} за всяка оценка
-SELECT Student.name, Grade.grade FROM Student JOIN Grade ON Student.id = Grade.student_id LIMIT 40;
+SELECT Student.name, Grade.grade
+FROM Student JOIN Grade ON Student.id = Grade.student_id LIMIT 40;
 
--- (3) {ученик, оценка, предмет} за всяка оценка
-SELECT Student.name, Grade.grade, Subject.name FROM Grade LEFT JOIN Subject ON Subject.id = Grade.student_id LEFT JOIN Student ON Student.id = Grade.subject_id LIMIT 40;
+-- (3) {ученик, среден успех} за всеки ученик, сортирани възходящо
+SELECT Student.name, AVG(Grade.grade)
+FROM Grade LEFT JOIN Student ON Grade.student_id = Student.id
+GROUP BY Student.name ORDER BY AVG(Grade.grade) ASC LIMIT 40;
 
--- (4) {ученик, среден успех} за всеки ученик, сортирани възходящо
-SELECT Student.name, AVG(Grade.grade) FROM Grade LEFT JOIN Student ON Grade.student_id = Student.id GROUP BY Student.name ORDER BY AVG(Grade.grade) ASC LIMIT 40;
+-- (4) Името на ученика с най-висок среден успех
+SELECT Student.name
+FROM Grade LEFT JOIN Student ON Grade.student_id = Student.id
+GROUP BY Student.name ORDER BY AVG(Grade.grade) DESC LIMIT 1;
 
--- (5) Името на ученика с най-висок среден успех
-SELECT Student.name FROM Grade LEFT JOIN Student ON Grade.student_id = Student.id GROUP BY Student.name ORDER BY AVG(Grade.grade) DESC LIMIT 1;
+-- (5) {ученик, брой оценки} за всеки ученик
+SELECT Student.name, COUNT(Grade.grade)
+FROM Grade LEFT JOIN Student ON Grade.student_id = Student.id
+GROUP BY Student.name LIMIT 40;
 
--- (6) {ученик, брой оценки} за всеки ученик
-SELECT Student.name, COUNT(Grade.grade) FROM Grade LEFT JOIN Student ON Grade.student_id = Student.id GROUP BY Student.name LIMIT 40;
+-- (6) {ученик, оценка, предмет} за всяка оценка
+SELECT Student.name, Grade.grade, Subject.name
+FROM Grade LEFT JOIN Subject ON Subject.id = Grade.student_id
+LEFT JOIN Student ON Student.id = Grade.subject_id LIMIT 40;
 
 -- (7) {ученик, предмет, среден успех} за всеки ученик
-SELECT Student.name, Subject.name, AVG(Grade.grade) FROM Student LEFT JOIN Grade ON Student.id = Grade.student_id LEFT JOIN Subject ON Grade.subject_id = Subject.id GROUP BY Subject.name LIMIT 40;
+SELECT Student.name, Subject.name, AVG(Grade.grade)
+FROM Student LEFT JOIN Grade ON Student.id = Grade.student_id
+LEFT JOIN Subject ON Grade.subject_id = Subject.id
+GROUP BY Subject.name, Student.name LIMIT 40;
