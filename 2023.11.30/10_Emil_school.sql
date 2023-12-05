@@ -63,14 +63,14 @@ SELECT Student.name, Grade.grade FROM Grade
 LEFT JOIN Student ON Grade.student_id = Student.id;
 
 -- Izvedete [Utchenik, sreden uspeh] za vseki uchenik, sortirani ot nai-nisuk kum nai-visok.
-SELECT Student.name, AVG(Grade.grade) FROM Grade
+SELECT Student.name, AVG(Grade.grade) FROM Student
 LEFT JOIN Student ON Student.id = Grade.student_id
 GROUP BY Student.id
 ORDER BY AVG(Grade.grade) ASC;
 
 -- Uchenik s nai-visok sreden uspeh.
-SELECT Student.name, AVG(Grade.grade) FROM Grade
-LEFT JOIN Student ON Student.id = Grade.student_id
+SELECT Student.name, AVG(Grade.grade) FROM Student
+LEFT JOIN Grade ON Student.id = Grade.student_id
 GROUP BY Student.name
 ORDER BY AVG(Grade.grade) DESC LIMIT 1;
 
