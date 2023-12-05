@@ -62,13 +62,13 @@ SELECT Student.name, Grade.grade FROM Grade
 LEFT JOIN Student ON Grade.student_id = Student.id;
 
 --  [среден успех, ученик] за всеку ученик, сортирани от най-нисък към висок
-SELECT Student.name, AVG(Grade.grade) FROM Grade
+SELECT Student.name, AVG(Grade.grade) FROM Student
 LEFT JOIN Student ON Student.id = Grade.student_id
 GROUP BY Student.id
 ORDER BY AVG(Grade.grade) ASC;
 
 --  ученик с най-висок среден.
-SELECT Student.name, AVG(Grade.grade) FROM Grade
+SELECT Student.name, AVG(Grade.grade) FROM Student
 LEFT JOIN Student ON Student.id = Grade.student_id
 GROUP BY Student.name
 ORDER BY AVG(Grade.grade) DESC LIMIT 1;
