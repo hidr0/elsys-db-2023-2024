@@ -60,36 +60,36 @@ SELECT * FROM Grade;
 
 -- [Улица, Ученик] За всеки ученик.
 SELECT Students.name, Address.street FROM Students
-JOIN Address ON Students.address_id = Address.id;
+LEFT JOIN Address ON Students.address_id = Address.id;
 
 -- [Ученик, оценка] За всяка оценка.
-SELECT Students.name, Grade.grade FROM Students
-JOIN Grade ON Students.id = Grade.student_id;
+SELECT Students.name, Grade.grade FROM Grade
+LEFT JOIN Students ON Students.id = Grade.student_id;
 
 -- [Ученик, среден успех] За всеки ученик сортирани от най-нисък към най-голям.
 SELECT Students.name, AVG(Grade.grade) average_grade FROM Students
-JOIN Grade ON Students.id = Grade.student_id
+LEFT JOIN Grade ON Students.id = Grade.student_id
 GROUP BY Students.id
 ORDER BY average_grade;
 
 -- Имeто на ученика с най-висок среден успех.
 SELECT Students.name FROM Students
-JOIN Grade ON Students.id = Grade.student_id
+LEFT JOIN Grade ON Students.id = Grade.student_id
 GROUP BY Students.id
 ORDER BY AVG(Grade.grade) DESC LIMIT 1;
 
 -- [Ученик, брой оценки] За всеки ученик.
 SELECT Students.name, COUNT(Grade.grade) count_grades FROM Students
-JOIN Grade ON Students.id = Grade.student_id
+LEFT JOIN Grade ON Students.id = Grade.student_id
 GROUP BY Students.id;
 
 -- [Ученик, оценка, предмет] За всяка оценка.
 SELECT Students.name, Grade.grade, Subject.name FROM Grade
-JOIN Students ON Grade.student_id = Students.id
-JOIN Subject ON Grade.subject_id = Subject.id;
+LEFT JOIN Students ON Grade.student_id = Students.id
+LEFT JOIN Subject ON Grade.subject_id = Subject.id;
 
 -- [Ученик, предмет, среден успех] Всеки ученик.
 SELECT Students.name, Subject.name, AVG(Grade.grade) average_grade FROM Students
-JOIN Grade ON Students.id = Grade.student_id
-JOIN Subject ON Grade.subject_id = Subject.id
-GROUP BY Students.id, Subject.id
+LEFT JOIN Grade ON Students.id = Grade.student_id
+LEFT JOIN Subject ON Grade.subject_id = Subject.id
+GROUP BY Students.name, Subject.name;
