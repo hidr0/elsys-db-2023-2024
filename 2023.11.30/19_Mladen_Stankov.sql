@@ -16,7 +16,7 @@ CREATE TABLE Student(
 
 CREATE TABLE Subject(
 	id int PRIMARY KEY AUTO_INCREMENT,
-    name ENUM("Mathematics", "BAza danni")
+    name ENUM("Mathematics", "Baza danni")
 );
 
 CREATE TABLE Grade(
