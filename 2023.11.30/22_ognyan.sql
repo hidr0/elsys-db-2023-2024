@@ -60,13 +60,13 @@ SELECT * FROM Grade;
 
 SELECT Address.street, Student.* FROM Student LEFT JOIN Address ON Student.address_id = Address.id;
 SELECT Student.*, Grade.grade FROM Grade LEFT JOIN Student ON Grade.student_id = Student.id;
-SELECT Student.*, AVG(Grade.grade) FROM Student LEFT JOIN Grade ON Grade.student_id = Student.id GROUP BY Student.name ORDER BY AVG(Grade.grade) ASC;
-SELECT Student.name FROM Student LEFT JOIN Grade ON Grade.student_id = Student.id GROUP BY Student.name ORDER BY AVG(Grade.grade) DESC LIMIT 1;
-SELECT Student.*, COUNT(Grade.grade) FROM Student LEFT JOIN Grade ON Grade.student_id = Student.id GROUP BY Student.name;
+SELECT Student.*, AVG(Grade.grade) FROM Student LEFT JOIN Grade ON Grade.student_id = Student.id GROUP BY Student.id ORDER BY AVG(Grade.grade) ASC;
+SELECT Student.name FROM Student LEFT JOIN Grade ON Grade.student_id = Student.id GROUP BY Student.id ORDER BY AVG(Grade.grade) DESC LIMIT 1;
+SELECT Student.*, COUNT(Grade.grade) FROM Student LEFT JOIN Grade ON Grade.student_id = Student.id GROUP BY Student.id;
 
 SELECT Student.*, Grade.grade, Subject.* FROM Grade LEFT JOIN Student ON Grade.student_id = Student.id LEFT JOIN Subject ON Grade.subject_id = Subject.id;
 SELECT Student.*, Subject.*, AVG(Grade.grade) 
 FROM Student
 LEFT JOIN Grade ON Grade.student_id = Student.id 
 LEFT JOIN Subject ON Grade.subject_id = Subject.id 
-GROUP BY Student.id, Subject.id, Student.name, Subject.name;
+GROUP BY Student.id, Subject.id;
