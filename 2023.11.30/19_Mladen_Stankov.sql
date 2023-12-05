@@ -16,7 +16,7 @@ CREATE TABLE Student(
 
 CREATE TABLE Subject(
 	id int PRIMARY KEY AUTO_INCREMENT,
-    name ENUM("Meth", "Bazi")
+    name ENUM("Mathematics", "BAza danni")
 );
 
 CREATE TABLE Grade(
@@ -33,11 +33,11 @@ INSERT INTO Address(street) values("Malinova dolina, bl 70");
 
 select * from Address;
 
-INSERT INTO Student(name, address_id) values("Pepi", 1);
-INSERT INTO Student(name, address_id) values("Misho", 2);
+INSERT INTO Student(name, address_id) values("Ivan", 1);
+INSERT INTO Student(name, address_id) values("Mladen", 2);
 
-INSERT INtO Subject(name) VALUES("Meth");
-INSERT INtO Subject(name) VALUES("Bazi");
+INSERT INtO Subject(name) VALUES("Mathematics");
+INSERT INtO Subject(name) VALUES("Baza danni");
 SELECT * FROM Subject;
 
 INSERT INTO Grade(grade, subject_id, student_id) VALUES(6, 1, 1);
@@ -47,7 +47,7 @@ INSERT INTO Grade(grade, subject_id, student_id) VALUES(4, 2, 2);
 INSERT INTO Grade(grade, subject_id, student_id) VALUES(3, 1, 2);
 
 INSERT INTO Address(street) values("TUES");
-INSERT INTO Student(name, address_id) values("Bez ocenka", 3);
+INSERT INTO Student(name, address_id) values("Chovek", 3);
 
 SELECT Student.name, grade FROM Grade
 LEFT JOIN Student
@@ -66,19 +66,22 @@ ON student_id = Student.id;
 
 -- [Ученик, среден успех] За всеки ученик сортирани от най-нисък към най-голям.
 SELECT Student.name, AVG(Grade.grade) FROM Student
-LEFT JOIN Grade ON Student.id = Grade.student_id
-GROUP BY Student.id, Student.name
+LEFT JOIN Grade 
+ON Student.id = Grade.student_id
+GROUP BY Student.id
 ORDER BY AVG(Grade.grade);
 
 -- Името на ученика с най-висок среден успех.
 SELECT Student.name, AVG(Grade.grade) FROM Student
-LEFT JOIN Grade ON Student.id = Grade.student_id
-GROUP BY Student.id, Student.name
+LEFT JOIN Grade
+ON Student.id = Grade.student_id
+GROUP BY Student.id
 ORDER BY AVG(Grade.grade) DESC LIMIT 1;
 
 -- [Ученик, брой оценки] За всеки ученик.
 SELECT Student.name, Count(Grade.id) FROM Student
-LEFT JOIN Grade ON Student.id = Grade.student_id
+LEFT JOIN Grade
+ON Student.id = Grade.student_id
 GROUP BY Student.name;
 
 -- [Ученик, оценка, предмет] За всяка оценка.
