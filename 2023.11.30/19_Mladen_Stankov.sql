@@ -55,7 +55,7 @@ ON student_id = Student.id;
 
 
 -- [Улица, Ученик] За всеки ученик.
-SELECT name, Address.street FROM Student
+SELECT Student.name, Address.street FROM Student
 LEFT JOIN Address
 On address_id = Address.id;
 
@@ -82,7 +82,7 @@ ORDER BY AVG(Grade.grade) DESC LIMIT 1;
 SELECT Student.name, Count(Grade.id) FROM Student
 LEFT JOIN Grade
 ON Student.id = Grade.student_id
-GROUP BY Student.name;
+GROUP BY Student.id;
 
 -- [Ученик, оценка, предмет] За всяка оценка.
 SELECT Student.name, grade, Subject.name FROM Grade
@@ -93,7 +93,9 @@ ON subject_id = Subject.id;
 
 -- [Ученик, предмет, среден успех] Всеки ученик.
 SELECT Student.name, Subject.name, AVG(Grade.grade) FROM Student
-LEFT JOIN Grade ON Student.id = Grade.student_id
-LEFT JOIN Subject ON Grade.subject_id = Subject.id
-GROUP BY Student.id, Student.name, Subject.id, Subject.name
+LEFT JOIN Grade
+ON Student.id = Grade.student_id
+LEFT JOIN Subject
+ON Grade.subject_id = Subject.id
+GROUP BY Student.id, Subject.id
 ORDER BY Student.name, Subject.name;
