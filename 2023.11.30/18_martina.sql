@@ -62,8 +62,27 @@ select * from Address left join Student on Address.id = Student.address_id;
 -- [Ученик, оценка] За всяка оценка.
 select * from Student left join Grade on Grade.student_id = Student.id;
 
--- [Ученик, среден успех] За всеки ученик сортирани от най-нисък към най-голям. (ne raboti)
-select * from Student left join Grade on Grade.student_id = Student.id order by avg(grade) asc;
+-- [Ученик, среден успех] За всеки ученик сортирани от най-нисък към най-голям. 
+select name, avg(grade) from Student 
+left join Grade on Grade.student_id = Student.id 
+group by Student.id order by avg(grade) asc;
 
 -- Името на ученика с най-висок среден успех.
--- kato zaraboti gornoto pravim syshtoto ama desc s limit 1
+select name from Student 
+left join Grade on Grade.student_id = Student.id 
+group by Student.id order by avg(grade) desc limit 1;
+
+-- [Ученик, брой оценки] За всеки ученик.
+select name, count(grade) from Student 
+left join Grade on Grade.student_id = Student.id group by Student.id;
+
+-- [Ученик, оценка, предмет] За всяка оценка. 
+select Student.name, grade, Subject.name from Grade 
+join Student on Grade.student_id = Student.id
+join Subject on Grade.subject_id = Subject.id;
+
+-- [Ученик, предмет, среден успех] Всеки ученик.
+select Student.name, Subject.name , avg(grade) from Student 
+join Grade on Grade.student_id = Student.id
+join Subject on Grade.subject_id = Subject.id group by Student.id, Subject.id;
+

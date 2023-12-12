@@ -10,6 +10,7 @@ CREATE TABLE Address(
 INSERT INTO Address(street) VALUES("Mladost 4, bl 564");
 INSERT INTO Address(street) VALUES("Studentski grad, bl 33");
 INSERT INTO Address(street) VALUES("Centar");
+INSERT INTO Address(street) VALUES("Lyulin 13");
 
 SELECT * FROM Address;
 
@@ -24,6 +25,7 @@ CREATE TABLE Student(
 INSERT INTO Student(name,address_id) VALUES("Misho", 1);
 INSERT INTO Student(name,address_id) VALUES("Niki", 2);
 INSERT INTO Student(name,address_id) VALUES("Bobi", 3);
+INSERT INTO Student(name,address_id) VALUES("Bozhidar", 4);
 
 SELECT * FROM Student;
 
@@ -66,14 +68,14 @@ SELECT Student.name, Grade.grade FROM Grade
 LEFT JOIN Student
 ON Student.id = Grade.student_id;
 -- [Ученик, среден успех] За всеки ученик сортирани от най-нисък към най-голям.
-SELECT Student.name, AVG(Grade.grade) FROM Grade
-LEFT JOIN Student
+SELECT Student.name, AVG(Grade.grade) FROM Student
+LEFT JOIN Grade
 ON Student.id = Grade.student_id
 GROUP BY Student.name
 ORDER BY AVG(Grade.grade) ASC;
 -- Името на ученика с най-висок среден успех.
-SELECT Student.name, AVG(Grade.grade) FROM Grade
-LEFT JOIN Student
+SELECT Student.name, AVG(Grade.grade) FROM Student
+LEFT JOIN Grade
 ON Student.id = Grade.student_id
 GROUP BY Student.name
 ORDER BY AVG(Grade.grade) DESC LIMIT 1;
@@ -91,7 +93,7 @@ LEFT JOIN Subject
 ON Grade.subject_id = subject.id;
 -- [Ученик, предмет, среден успех] Всеки ученик.
 SELECT Student.name,Subject.name,AVG(Grade.grade) FROM Student
-LEFT JOIN GRADE
+LEFT JOIN Grade
 ON Grade.student_id=student.id
 LEFT JOIN Subject
 ON Grade.subject_id = subject.id
