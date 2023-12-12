@@ -57,26 +57,34 @@ insert into people_rooms (person_id, room_id) values
 	(3, 5),
 	(3, 6);
 
+-- Колко посетители има всеки хотел?
 select
-	h.name as hotel_name,
-	r.name as room_name
+    hotels.name,
+    count(people_rooms.person_id)
 from
-	hotels h
-join rooms r on h.id = r.hotel_id;
-
-select
-	p.name as person_name,
-	r.name as room_name
-from
-	people p
-join people_rooms pr on p.id = pr.person_id
-join rooms r on pr.room_id = r.id;
-
-select
-	h.name as hotel_name,
-	count(r.id) as room_count
-from
-	hotels h
-left join rooms r on h.id = r.hotel_id
+    hotels
+left join rooms on hotels.id = rooms.hotel_id
+left join people_rooms on rooms.id = people_rooms.room_id
 group by
-	h.id;
+    hotels.id;
+
+-- Извадете хотела без посетители.
+select
+    hotels.*
+from
+    hotels
+left join rooms on hotels.id = rooms.hotel_id
+left join people_rooms on rooms.id = people_rooms.room_id
+where
+    people_rooms.room_id is null;
+
+-- [Хотел, Стая, Човек] за всеки човек
+select
+    people.name,
+    hotels.name,
+    rooms.name
+from
+    people
+join people_rooms on people.id = people_rooms.person_id
+join rooms on people_rooms.room_id = rooms.id
+join hotels on rooms.hotel_id = hotels.id;
