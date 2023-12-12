@@ -62,7 +62,7 @@ SELECT Hotel.*
 FROM Reservation
 RIGHT JOIN Rooms ON Rooms.id = Reservation.room_id
 RIGHT JOIN Hotel ON Hotel.id = Rooms.hotel_id
-WHERE Reservation.id IS NULL
+WHERE Reservation.id IS NULL -- this works because I'm right joining above
 GROUP BY Hotel.id;
 
 -- [Hotel, Room, Person] for every person
