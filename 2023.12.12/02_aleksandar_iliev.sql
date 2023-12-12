@@ -36,8 +36,8 @@ INSERT INTO Room(floor, name, hotel_id) VALUES
 
 CREATE TABLE Reservations(
     id INT PRIMARY KEY AUTO_INCREMENT,
-    room_id INT,
-    person_id INT,
+    room_id INT NOT NULL,
+    person_id INT NOT NULL,
     FOREIGN KEY (room_id) REFERENCES Room(id),
     FOREIGN KEY (person_id) REFERENCES Person(id)
 );
@@ -51,13 +51,13 @@ SELECT * FROM Person;
 SELECT * FROM Room;
 
 -- How many visitors per hotel?
-
 SELECT Hotel.name, COUNT(Person.id) FROM Hotel
 LEFT JOIN Room ON Room.hotel_id = Hotel.id
 LEFT JOIN Reservations ON Reservations.room_id = Room.id
 LEFT JOIN Person ON Person.id = Reservations.person_id
 GROUP BY Hotel.name;
 
+-- Visitorless
 SELECT Hotel.name, COUNT(Person.id) FROM Hotel
 LEFT JOIN Room ON Room.hotel_id = Hotel.id
 LEFT JOIN Reservations ON Reservations.room_id = Room.id
@@ -65,6 +65,7 @@ LEFT JOIN Person ON Person.id = Reservations.person_id
 GROUP BY Hotel.name
 HAVING COUNT(Person.id) = 0;
 
+-- Stats per person
 SELECT Hotel.name AS Hotel, Room.name AS Room, Person.name FROM Person
 LEFT JOIN Reservations ON Person.id = Reservations.person_id
 LEFT JOIN Room ON Reservations.room_id = Room.id
