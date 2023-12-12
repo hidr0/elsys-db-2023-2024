@@ -74,13 +74,34 @@ ON Grade.student_id = Student.id;
 
 -- 3 - изведете [Ученик, среден успех] За всеки ученик сортирани от най-нисък към най-голям
 
-SELECT * FROM Grade
-RIGHT JOIN Student
-ON Student_id = Grade.student_id
-GROUP BY Student.id
-ORDER BY AVG(Grade.grade);
+-- 3 - изведете [Ученик, среден успех] За всеки ученик сортирани от най-нисък към най-голям
+SELECT Student.name, AVG(Grade.grade)
+FROM Grade
+JOIN Student ON Grade.student_id = Student.id
+GROUP BY Student.id;
 
 -- 4 - изведете Името на ученика с най-висок среден успех.
+SELECT Student.name, AVG(Grade.grade) as avg_grade
+FROM Grade
+JOIN Student ON Grade.student_id = Student.id
+GROUP BY Student.id
+ORDER BY avg_grade DESC LIMIT 1;
+
 -- 5 - изведете [Ученик, брой оценки] За всеки ученик.
+SELECT Student.name, COUNT(Grade.id) as num_grades
+FROM Grade
+JOIN Student ON Grade.student_id = Student.id
+GROUP BY Student.id;
+
 -- 6 - изведете [Ученик, оценка, предмет] За всяка оценка.
+SELECT Student.name, Grade.grade, Subject.name
+FROM Grade
+JOIN Student ON Grade.student_id = Student.id
+JOIN Subject ON Grade.subject_id = Subject.id;
+
 -- 7 - изведете [Ученик, предмет, среден успех] Всеки ученик.
+SELECT Student.name, Subject.name, AVG(Grade.grade)
+FROM Grade
+JOIN Student ON Grade.student_id = Student.id
+JOIN Subject ON Grade.subject_id = Subject.id
+GROUP BY Student.id, Subject.id;
