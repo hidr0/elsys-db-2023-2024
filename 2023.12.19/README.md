@@ -1,0 +1,1 @@
+![My animated logo](diagram.jpg)
