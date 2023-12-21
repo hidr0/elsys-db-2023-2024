@@ -1,96 +1,90 @@
-DROP DATABASE IF EXISTS school;
-CREATE DATABASE school;
-USE school;
+DROP DATABASE IF EXISTS realEstateMarket;
+CREATE DATABASE realEstateMarket;
+USE realEstateMarket;
 
-CREATE TABLE Address(
-	id int PRIMARY KEY AUTO_INCREMENT,
-    street varchar(200)
+CREATE TABLE Person (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(30) NOT NULL UNIQUE,
+    phone_number VARCHAR(14) NOT NULL CHECK(phone_number LIKE '+359%'),
+    email VARCHAR(50) NOT NULL CHECK(email LIKE '%@%')
 );
 
-CREATE TABLE Student(
-	id int PRIMARY KEY AUTO_INCREMENT,
-    name varchar(200) not null unique,
-    address_id int not null,
-    Foreign KEY(address_id) REFERENCES Address(id)
+CREATE TABLE Address (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    city VARCHAR(100) NOT NULL,
+    zip_code VARCHAR(4) NOT NULL
 );
 
-CREATE TABLE Subject(
-	id int PRIMARY KEY AUTO_INCREMENT,
-    name ENUM("Meth", "Bazi")
+CREATE TABLE RealEstateAgent (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL
 );
 
-CREATE TABLE Grade(
-	id int PRIMARY KEY AUTO_INCREMENT,
-    grade int not null check(grade in (2,3,4,5,6)),
-    subject_id int not null,
-    FOREIGN KEY(subject_id) REFERENCES Subject(id),
-    student_id int not null,
-    FOREIGN KEY(student_id) REFERENCES Student(id)
+CREATE TABLE House (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    price FLOAT NOT NULL CHECK(price > 0),
+    agent_id INT NOT NULL, 
+    address_id INT NOT NULL,
+    FOREIGN KEY (agent_id) REFERENCES RealEstateAgent(id),
+    FOREIGN KEY (address_id) REFERENCES Address(id)
 );
 
-INSERT INTO Address(street) values("MLadost4, bl 437");
-INSERT INTO Address(street) values("Malinova dolina, bl 70");
+CREATE TABLE PersonHouse (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    person_id INT NOT NULL,
+    house_id INT NOT NULL,
+    FOREIGN KEY (person_id) REFERENCES Person(id),
+    FOREIGN KEY (house_id) REFERENCES House(id)
+);
 
-select * from Address;
+INSERT INTO Person (name, phone_number, email)
+VALUES	('kris', '+359111111111', 'kris@bait.bg'),
+		('mladen', '+359222222222', 'mladen@dengi.com'),
+		('ivan', '+359333333333','ivan@peti.ru');
 
-INSERT INTO Student(name, address_id) values("Pepi", 1);
-INSERT INTO Student(name, address_id) values("Misho", 2);
+INSERT INTO Address (city, zip_code)
+VALUES	('Sofia', '1001'),
+		('Plovdiv', '2222'),
+		('Turgovishte', '7777');
 
-INSERT INtO Subject(name) VALUES("Meth");
-INSERT INtO Subject(name) VALUES("Bazi");
-SELECT * FROM Subject;
-
-INSERT INTO Grade(grade, subject_id, student_id) VALUES(6, 1, 1);
-INSERT INTO Grade(grade, subject_id, student_id) VALUES(5, 1, 1);
-
-INSERT INTO Grade(grade, subject_id, student_id) VALUES(4, 2, 2);
-INSERT INTO Grade(grade, subject_id, student_id) VALUES(3, 1, 2);
-
-INSERT INTO Address(street) values("TUES");
-INSERT INTO Student(name, address_id) values("Bez ocenka", 3);
-
-SELECT Student.name, grade FROM Grade
-LEFT JOIN Student
-ON student_id = Student.id;
+INSERT INTO RealEstateAgent (name)
+VALUES	('Emba'),
+		('Stef'),
+		('Kalo');
 
 
--- [Улица, Ученик] За всеки ученик.
-SELECT name, Address.street FROM Student
+INSERT INTO House (price, agent_id, address_id)
+VALUES	(89450, 1, 1),
+		(750000, 1, 2),
+        (66999, 3, 3),
+        (1234567, 2, 3);
+
+INSERT INTO PersonHouse (person_id, house_id) 
+VALUES	(1, 1),
+		(1, 4),
+		(2, 2),
+		(3, 3);
+
+-- Изведете средната стойност на къщите, които е гледал всеки човек
+SELECT Person.name, AVG(House.price) FROM Person
+LEFT JOIN PersonHouse 
+ON PersonHouse.person_id = Person.id
+LEFT JOIN House
+ON PersonHouse.house_id = House.id
+GROUP BY Person.id;
+
+-- Изведете най-високата цена на къща, която предлага всеки агент
+SELECT RealEstateAgent.name, MAX(House.price) FROM RealEstateAgent
+LEFT JOIN House
+ON RealEstateAgent.id = House.agent_id
+GROUP BY RealEstateAgent.id;
+
+
+-- Изведете всички адреси на които е бил всеки човек
+SELECT Person.name, Address.city, Address.zip_code FROM Person
+LEFT JOIN PersonHouse
+ON PersonHouse.person_id = Person.id
+LEFT JOIN House
+ON PersonHouse.house_id = House.id
 LEFT JOIN Address
-On address_id = Address.id;
-
--- [Ученик, оценка] За всяка оценка.
-SELECT Student.name, grade FROM Grade
-LEFT JOIN Student
-ON student_id = Student.id;
-
--- [Ученик, среден успех] За всеки ученик сортирани от най-нисък към най-голям.
-SELECT Student.name, AVG(Grade.grade) FROM Student
-LEFT JOIN Grade ON Student.id = Grade.student_id
-GROUP BY Student.id, Student.name
-ORDER BY AVG(Grade.grade);
-
--- Името на ученика с най-висок среден успех.
-SELECT Student.name, AVG(Grade.grade) FROM Student
-LEFT JOIN Grade ON Student.id = Grade.student_id
-GROUP BY Student.id, Student.name
-ORDER BY AVG(Grade.grade) DESC LIMIT 1;
-
--- [Ученик, брой оценки] За всеки ученик.
-SELECT Student.name, Count(Grade.id) FROM Student
-LEFT JOIN Grade ON Student.id = Grade.student_id
-GROUP BY Student.name;
-
--- [Ученик, оценка, предмет] За всяка оценка.
-SELECT Student.name, grade, Subject.name FROM Grade
-LEFT JOIN Student
-ON student_id = Student.id
-LEFT JOIN Subject
-ON subject_id = Subject.id;
-
--- [Ученик, предмет, среден успех] Всеки ученик.
-SELECT Student.name, Subject.name, AVG(Grade.grade) FROM Student
-LEFT JOIN Grade ON Student.id = Grade.student_id
-LEFT JOIN Subject ON Grade.subject_id = Subject.id
-GROUP BY Student.id, Student.name, Subject.id, Subject.name
-ORDER BY Student.name, Subject.name;
+ON House.address_id = Address.id;
