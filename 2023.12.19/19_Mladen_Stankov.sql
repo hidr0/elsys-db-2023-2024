@@ -81,7 +81,7 @@ INSERT INTO viewing (person_id, house_id) VALUES
     (7, 2);
     
 -- Изведете средната стойност на къщите, които е гледал всеки човек
-SELECT person.name, AVG(house.price) FROM viewing
+SELECT person.name, AVG(house.price) AS average_price FROM viewing
 LEFT JOIN person
 ON viewing.person_id = person.id
 LEFT JOIN house
@@ -89,7 +89,7 @@ ON viewing.house_id = house.id
 GROUP BY person.id;
 
 -- Изведете най-високата цена за къщите, които предлага всеки агент
-SELECT real_estate_agent.name, MAX(house.price) FROM house
+SELECT real_estate_agent.name, MAX(house.price) AS max_price FROM house
 LEFT JOIN real_estate_agent
 ON house.real_estate_agent_id = real_estate_agent.id
 GROUP BY real_estate_agent.id;
