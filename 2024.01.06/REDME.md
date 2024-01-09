@@ -11,7 +11,6 @@
 
 3. **Books Table**
    - `title`: VARCHAR(200) (Not Null)
-   - `author_name`: VARCHAR(100) (Not Null)
    - `publication_date`: DATE
    - `isbn`: VARCHAR(20) (Unique, Not Null)
    - `pages`: INT (> 0)
