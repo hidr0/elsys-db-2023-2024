@@ -6,13 +6,13 @@
    - `birthdate`: DATE (Not Null)
 
 2. **AuthorDetails Table** (One-to-One relationship with Authors)
-   - `author_name`: VARCHAR(100) (Foreign Key to Authors, Not Null)
+   - `author_name`: VARCHAR(100) (Not Null)
    - `biography`: TEXT
    - `awards`: TEXT
 
 3. **Books Table**
    - `title`: VARCHAR(200) (Not Null)
-   - `author_name`: VARCHAR(100) (Foreign Key to Authors, Not Null)
+   - `author_name`: VARCHAR(100) (Not Null)
    - `publication_date`: DATE
    - `isbn`: VARCHAR(20) (Unique, Not Null)
    - `pages`: INT (> 0)
