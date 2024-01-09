@@ -5,7 +5,7 @@
    - `email`: VARCHAR(100) (Unique, Not Null)
    - `birthdate`: DATE (Not Null)
 
-2. **AuthorDetails Table** (One-to-One relationship with Authors)
+2. **AuthorDetails Table**
    - `author_name`: VARCHAR(100) (Not Null)
    - `biography`: TEXT
    - `awards`: TEXT
@@ -60,9 +60,9 @@
 
 5. **Authors with No Awards**: Write a query to find all authors who have not received any awards. Display their names and biographies.
 
-6. **Update Book Information**: Write a query to update the number of pages of a specific book. (This is more of an action query than a retrieval query.)
+6. **Update Book Information**: Write a query to update the number of pages of a specific book. Update the book "The Future World" to have 501 pages.
 
-7. **Delete an Author**: Write a query to delete an author from the `Authors` table. Ensure that all their books are also deleted. (Note: This requires understanding of cascading deletes or manual deletion from multiple tables.)
+7. **Delete a Book**: Write a query to delete an author from the `Books` table. Delete the Books which have more than 200 pages.
 
 8. **Search Books by Title Keyword**: Write a query to find books whose titles contain a specific keyword, like 'World'. Display the book titles and their authors.
 
