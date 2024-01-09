@@ -6,7 +6,6 @@
    - `birthdate`: DATE (Not Null)
 
 2. **AuthorDetails Table**
-   - `author_name`: VARCHAR(100) (Not Null)
    - `biography`: TEXT
    - `awards`: TEXT
 
