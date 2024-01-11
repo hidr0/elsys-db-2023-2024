@@ -1,3 +1,9 @@
+# Add this to your code at the top
+
+```
+SET SQL_SAFE_UPDATES=0;
+```
+
 ![My animated logo](diagram.png)
 
 ### Revised Dummy Data
