@@ -1,50 +1,37 @@
-CREATE DATABASE SchoolDB;
+INSERT INTO Cars (model, make, year, color) VALUES
+('Corolla', 'Toyota', 2012, 'Black'),
+('Civic', 'Honda', 2015, 'White'),
+('Mustang', 'Ford', 2020, 'Red'),
+('M5', 'Bmw', 2006, 'Blue'),
+('s600', 'Mercedes', 1997, 'Black');
 
-USE SchoolDB;
+INSERT INTO Drivers (name, license_number, experience_years) VALUES
+('John Smith', 'ABC123', 6),
+('Alice Johnson', 'DEF456', 3),
+('Pesho', 'GHI789', 7),
+('Mary Brown', 'JKL012', 2),
+('Bob Miller', 'MNO345', 4);
 
-CREATE TABLE Students (
-    StudentID INT PRIMARY KEY AUTO_INCREMENT,
-    FirstName VARCHAR(50),
-    LastName VARCHAR(50),
-    DOB DATE,
-    Address VARCHAR(100)
-);
+SELECT model FROM Cars WHERE year > 2010;
 
-CREATE TABLE Courses (
-    CourseID INT PRIMARY KEY AUTO_INCREMENT,
-    CourseName VARCHAR(50),
-    CourseDescription TEXT
-);
+SELECT name FROM Drivers WHERE experience_years > 5;
 
-INSERT INTO Students (FirstName, LastName, DOB, Address) VALUES
-('Paul', 'Walker', '2001-05-15', '123 Elm Street'),
-('Jane', 'Doe', '1999-09-20', '456 Oak Avenue'),
-('Peter', 'Adams', '2002-03-10', '123 Elm Street'),
-('Alex', 'Smith', '2000-11-28', NULL),
-('Viktor', 'Johnson', '1998-07-05', '789 Apple Drive');
+SELECT make, model FROM Cars WHERE color IN ('Black', 'White');
 
+UPDATE Drivers SET experience_years = experience_years + 1 WHERE name = 'Pesho';
 
-INSERT INTO Courses (CourseName, CourseDescription) VALUES
-('Mathematics', 'Course for the mathematical concepts and solving problems.'),
-('History', 'Course for the historical events and their impact.'),
-('Physics', 'Course for the principles of physics.');
+DELETE FROM Cars WHERE year < YEAR(CURDATE()) - 20;
 
+SELECT * FROM Cars WHERE color = 'Red' OR year > 2015;
+SELECT * FROM Drivers WHERE experience_years < 2 OR license_number LIKE 'A%';
+SELECT model FROM Cars WHERE model LIKE 'A%';
+SELECT * FROM Drivers WHERE name LIKE '%John%';
 
-SELECT * FROM Students WHERE Address = '123 Elm Street';
+SELECT model FROM Cars WHERE year = (SELECT MAX(year) FROM Cars);
 
-SELECT * FROM Students WHERE FirstName = 'John' AND DOB > '2000-01-01' ;
+SELECT COUNT(*) FROM Drivers WHERE experience_years > 3;
 
-SELECT * FROM Courses WHERE CourseName = 'Mathematics' OR CourseName = 'History';
+SELECT AVG(year) FROM Cars;
 
-SELECT * FROM Students WHERE Address IS NULL;
-
-UPDATE Students SET Address = '456 Oak Avenue' WHERE StudentID = 3;
-
-
-UPDATE Courses SET CourseDescription = 'An introduction to basic algebra and geometry.' WHERE CourseName = 'Mathematics';
-
-UPDATE Students SET Address = '456 Oak Avenue' WHERE StudentID = 3;
-
-DELETE FROM Students WHERE FirstName = 'Jane' AND LastName = 'Doe' ;
-
-DELETE FROM Courses WHERE CourseName = 'Physical Education';
+SELECT * FROM Cars ORDER BY year ASC LIMIT 1;
+SELECT * FROM Drivers WHERE name LIKE '%z%' ORDER BY experience_years DESC LIMIT 1;
