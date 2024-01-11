@@ -4,7 +4,7 @@
 SET SQL_SAFE_UPDATES=0;
 ```
 
-![My animated logo](diagram.png)
+![My animated logo](diagram)
 
 ### Revised Dummy Data
 
