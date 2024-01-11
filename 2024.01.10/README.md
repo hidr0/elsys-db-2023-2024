@@ -1,5 +1,4 @@
-![My animated logo](diagram.jpg)
-Certainly! I'll adjust the dummy data for the clinic database scenario by using names instead of IDs, which will make the data more realistic and relatable.
+![My animated logo](./diagram.jpg)
 
 ### Revised Dummy Data
 
