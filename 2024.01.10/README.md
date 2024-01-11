@@ -1,4 +1,4 @@
-![My animated logo](diagram.jpg)
+![My animated logo](diagram.png)
 
 ### Revised Dummy Data
 
