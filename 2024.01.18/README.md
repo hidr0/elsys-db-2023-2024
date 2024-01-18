@@ -15,7 +15,7 @@ SET SQL_SAFE_UPDATES=0;
 - A team can have many players.
 - A plater must have a team.
 
-### Player - Therapist
+#### Player - Therapist
 
 - A player can go to many therapists.
 - A therapist can do a massage on many players.
@@ -33,6 +33,7 @@ SET SQL_SAFE_UPDATES=0;
 - Get the average team age of all teams.
 - List the team name and average team age of all players.[Name, average age]
 
+## Dummy Data:
 This data is only dummy data, it is not real. It can be different from what fields are needed. It is only there to help you get idea for names, dates, ages and etc.
 
 - **Teams**:
