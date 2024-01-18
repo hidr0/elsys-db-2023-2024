@@ -6,6 +6,33 @@ SET SQL_SAFE_UPDATES=0;
 
 ![My animated logo](diagram.jpg)
 
+## Database
+
+- One Team has One Coach.
+- One Coach must have One Team.
+- Team can have multiple training sessions.
+- A training session must have a team.
+- A team can have many players.
+- A plater must have a team.
+
+### Player - Therapist
+
+- A player can go to many therapists.
+- A therapist can do a massage on many players.
+- You must save the date and time of each massage.
+
+
+## Queries:
+
+- List all Training sessions for all teams [Location, when, team.name, coach.name]
+- List all Team that do not have any training sessions. [team.name]
+- List all therapy sessions for a player [Player.name, massage.date, Therapist.name]
+- List all the Therapists for the "Warriors"
+- Count the number of training sessions each team has in Feb 2022.
+- Get the name of the oldest team.
+- Get the average team age of all teams.
+- List the team name and average team age of all players.[Name, average age]
+
 This data is only dummy data, it is not real. It can be different from what fields are needed. It is only there to help you get idea for names, dates, ages and etc.
 
 - **Teams**:
