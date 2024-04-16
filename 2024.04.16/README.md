@@ -9,5 +9,7 @@
 }
 ```
 3 - Query all the calls that have a Ping response with key "name" and value "Pesho"
+
 4 - Нормализирана ли е базата, ако не защо?
+
 5 - created_at трябва да взема стойността на записване в момента, по подразбиране.
