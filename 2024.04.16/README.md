@@ -7,4 +7,5 @@
   "age": "12",
   "gender": "male"
 }
+```
 3 - Query all the calls that have a Ping response with key "name" and value "Pesho"
