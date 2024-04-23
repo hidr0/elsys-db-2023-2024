@@ -29,16 +29,14 @@ VALUES 	('Tag 1'),
 CREATE TABLE TagValue (
     id INT AUTO_INCREMENT PRIMARY KEY,
     tag_id INT UNIQUE NOT NULL,
-    call_id INT UNIQUE NOT NULL,
     value VARCHAR(255),
-    FOREIGN KEY (tag_id) REFERENCES Tag(id),
-    FOREIGN KEY (call_id) REFERENCES CallS(id)
+    FOREIGN KEY (tag_id) REFERENCES Tag(id)
 );
 
-INSERT INTO TagValue (tag_id, call_id, value) 
-VALUES 	(1, 1, 'Value 1'),
-		(2, 2, 'Value 2'),
-		(3, 3, 'Value 3');
+INSERT INTO TagValue (tag_id, value) 
+VALUES 	(1, 'Value 1'),
+		(2, 'Value 2'),
+		(3, 'Value 3');
 
 CREATE TABLE TagCall (
 	id INT AUTO_INCREMENT PRIMARY KEY,
@@ -61,10 +59,10 @@ CREATE TABLE Ping (
     FOREIGN KEY (call_id) REFERENCES Calls(id)
 );
 
-INSERT INTO Ping (call_id, url, response) VALUES 
-    (1, 'https://example.com', '{"name": "Pesho", "age": "12", "gender": "male"}'),
-    (2, 'https://test.com', '{"name": "Gosho", "age": "14", "gender": "male"}'),
-    (3, 'https://example.org', '{"name": "Sasho", "age": "16", "gender": "male"}');
+INSERT INTO Ping (call_id, url, response) 
+VALUES 	(1, 'https://example.com', '{"name": "Pesho", "age": "12", "gender": "male"}'),
+		(2, 'https://test.com', '{"full name": "Pesho Petrov", "age": "14", "gender": "male"}'),
+		(3, 'https://example.org', '{"name": "Gosho", "age": "16", "gender": "male"}');
 
 SELECT * FROM Calls;
 SELECT * FROM Tag;
@@ -73,4 +71,4 @@ SELECT * FROM Ping;
 
 SELECT Calls.* FROM Calls
 LEFT JOIN Ping ON Calls.id = Ping.call_id
-WHERE Ping.response LIKE '%name%Pesho%';
+WHERE JSON_CONTAINS(Ping.response, '{"name": "Pesho"}');
