@@ -24,7 +24,7 @@ INSERT INTO Song (title, uid, metadata)
 VALUES 	('First Song', UUID(), '{ "title": "Imagine", "duration": "3:03", "release_date": "1971-10-11", "genres": [ "Soft rock", "Pop" ], "album": { "title": "Imagine", "release_year": 1971, "label": "Apple Records", "formats": [ "LP", "CD", "Digital" ] } }'),
 		('Another Song', UUID(), null),
 		('Hit Song', UUID(), '{ "album": { "formats": ["LP", "CD"] } }'),
-        ('A Song', UUID(), '{ "album": { "formats": ["CD", "Digital"] } }');
+        ('A Song', UUID(), '{ "album": { "formats": ["LPCD", "Digital"] } }');
 
 CREATE TABLE Artist (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -78,4 +78,4 @@ VALUES 	(1, 1),
 SELECT * FROM Song WHERE metadata IS NOT NULL;
 
 SELECT * FROM Song 
-WHERE JSON_EXTRACT(metadata, '$.album.formats') LIKE "%LP%";
+WHERE JSON_EXTRACT(metadata, '$.album.formats') LIKE '%"LP"%';
