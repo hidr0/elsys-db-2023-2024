@@ -1,5 +1,7 @@
 1 - uuid should be generated when inserting the record.
+
 2 - created_at should have a default value of when the record is inserted.
+
 3 - Many to Many should be without repeating:
 
 ```
