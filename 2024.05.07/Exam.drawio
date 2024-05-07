@@ -1,0 +1,85 @@
+<mxfile host="app.diagrams.net" modified="2024-05-07T07:04:28.170Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15" etag="rpOF7BDQF3ZyLMuOgSvI" version="24.3.0" type="device">
+  <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
+    <mxGraphModel dx="1836" dy="1009" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="zkfFHV4jXpPFQw0GAbJ--0" value="Chefs" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="30" y="120" width="180" height="140" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zkfFHV4jXpPFQw0GAbJ--1" value="name" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="zkfFHV4jXpPFQw0GAbJ--0" vertex="1">
+          <mxGeometry y="26" width="180" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="zkfFHV4jXpPFQw0GAbJ--2" value="age (&lt; 0 )" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" parent="zkfFHV4jXpPFQw0GAbJ--0" vertex="1">
+          <mxGeometry y="52" width="180" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="zkfFHV4jXpPFQw0GAbJ--4" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="zkfFHV4jXpPFQw0GAbJ--0" vertex="1">
+          <mxGeometry y="78" width="180" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="FrrT3JI4YubvikRyxyrP-17" value="speciality (meat, salad, sushi)" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" vertex="1" parent="zkfFHV4jXpPFQw0GAbJ--0">
+          <mxGeometry y="86" width="180" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="zkfFHV4jXpPFQw0GAbJ--17" value="Recipes" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="330" y="20" width="160" height="210" as="geometry">
+            <mxRectangle x="550" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zkfFHV4jXpPFQw0GAbJ--18" value="title" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="zkfFHV4jXpPFQw0GAbJ--17" vertex="1">
+          <mxGeometry y="26" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="zkfFHV4jXpPFQw0GAbJ--19" value="cooking_time ( &gt; 0)" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" parent="zkfFHV4jXpPFQw0GAbJ--17" vertex="1">
+          <mxGeometry y="52" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="zkfFHV4jXpPFQw0GAbJ--23" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="zkfFHV4jXpPFQw0GAbJ--17" vertex="1">
+          <mxGeometry y="78" width="160" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="FrrT3JI4YubvikRyxyrP-14" value="metadata (json)" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" vertex="1" parent="zkfFHV4jXpPFQw0GAbJ--17">
+          <mxGeometry y="86" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="FrrT3JI4YubvikRyxyrP-22" value="uuid (not null, uniq)" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" vertex="1" parent="zkfFHV4jXpPFQw0GAbJ--17">
+          <mxGeometry y="112" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="FrrT3JI4YubvikRyxyrP-26" value="servings ( &gt; 0)" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" vertex="1" parent="zkfFHV4jXpPFQw0GAbJ--17">
+          <mxGeometry y="138" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="zkfFHV4jXpPFQw0GAbJ--26" value="" style="endArrow=ERmany;shadow=0;strokeWidth=1;rounded=0;curved=0;endFill=0;edgeStyle=elbowEdgeStyle;elbow=vertical;endSize=16;startSize=16;startArrow=none;startFill=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="zkfFHV4jXpPFQw0GAbJ--0" target="zkfFHV4jXpPFQw0GAbJ--17" edge="1">
+          <mxGeometry x="0.5" y="41" relative="1" as="geometry">
+            <mxPoint x="380" y="192" as="sourcePoint" />
+            <mxPoint x="540" y="192" as="targetPoint" />
+            <mxPoint x="-40" y="32" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FrrT3JI4YubvikRyxyrP-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endSize=16;startSize=16;endArrow=ERmany;endFill=0;startArrow=ERmany;startFill=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="FrrT3JI4YubvikRyxyrP-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="490" y="189" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FrrT3JI4YubvikRyxyrP-1" value="Ingredients" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="600" y="81" width="160" height="216" as="geometry">
+            <mxRectangle x="550" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FrrT3JI4YubvikRyxyrP-2" value="name" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="FrrT3JI4YubvikRyxyrP-1">
+          <mxGeometry y="26" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="FrrT3JI4YubvikRyxyrP-4" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="FrrT3JI4YubvikRyxyrP-1">
+          <mxGeometry y="52" width="160" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="FrrT3JI4YubvikRyxyrP-21" value="vegan [true, false]" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="FrrT3JI4YubvikRyxyrP-1">
+          <mxGeometry y="60" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="FrrT3JI4YubvikRyxyrP-23" value="&lt;ul&gt;&lt;li&gt;В една рецепта може да има една съставка само един път&lt;br&gt;&lt;/li&gt;&lt;li&gt;Една рецепта трябва ЗАДЪЛЖИТЕЛНО да има &#39;Шеф&#39;&lt;br&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;uuid&lt;/b&gt; трябва или да е default или да се записва правилно при вкарване на данни&amp;nbsp;&lt;br&gt;&lt;/li&gt;&lt;/ul&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="-60" y="297" width="530" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="FrrT3JI4YubvikRyxyrP-24" value="&lt;div style=&quot;text-align: start; font-family: Menlo, Monaco, &amp;quot;Courier New&amp;quot;, monospace; font-size: 15px; line-height: 23px; white-space: pre;&quot;&gt;&lt;div&gt;Примерна metadata&lt;/div&gt;&lt;div&gt;{&lt;/div&gt;&lt;div&gt;  &quot;recipe&quot;: {&lt;/div&gt;&lt;div&gt;    &quot;title&quot;: &quot;Classic Tomato Spaghetti&quot;,&lt;/div&gt;&lt;div&gt;    &quot;cuisine&quot;: &quot;Italian&quot;,&lt;/div&gt;&lt;div&gt;    &quot;category&quot;: &quot;Main Course&quot;,&lt;/div&gt;&lt;div&gt;    &quot;servings&quot;: 4,&lt;/div&gt;&lt;div&gt;    &quot;cookingTime&quot;: &quot;30 minutes&quot;,&lt;/div&gt;&lt;div&gt;    &quot;nutrition&quot;: {&lt;/div&gt;&lt;div&gt;      &quot;calories&quot;: 480,&lt;/div&gt;&lt;div&gt;      &quot;protein&quot;: &quot;14g&quot;,&lt;/div&gt;&lt;div&gt;      &quot;fat&quot;: &quot;10g&quot;,&lt;/div&gt;&lt;div&gt;      &quot;carbohydrates&quot;: &quot;83g&quot;&lt;/div&gt;&lt;div&gt;    }&lt;/div&gt;&lt;div&gt;  }&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="500" y="310" width="410" height="410" as="geometry" />
+        </mxCell>
+        <mxCell id="FrrT3JI4YubvikRyxyrP-25" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Заявки&lt;/font&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;ol&gt;&lt;li&gt;Изведете всеки [chefs.name, recipes.title] за всяка рецепта.&lt;br&gt;&lt;/li&gt;&lt;li&gt;Сортирайте рецептите по брой веган съставки във низходящ ред&lt;br&gt;&lt;/li&gt;&lt;li&gt;Намерете всички рецепти, които имат метаданна &quot;recipe.nutrition.calories&quot; повече от 200&lt;br&gt;&lt;/li&gt;&lt;li&gt;Намерете всички рецепти, които нямат стойност за медатаданната &quot;recipe.cuisine&quot;&lt;br&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="-90" y="445" width="580" height="140" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
